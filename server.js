@@ -1,4 +1,4 @@
-const secret_salt = require('dotenv').config();
+const dotenv = require('dotenv').config();
 
 var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');

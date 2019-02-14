@@ -1,12 +1,27 @@
 const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 
+
+
 module.exports = app => {
 
-    // SIGN UP FORM
-app.get("/sign-up", (req, res) => {
-  res.render("sign-up");
-});
+//Jasmine Humbert's code:
+// *******
+    app.get('/sign-up', (req, res) => {
+        var currentUser = req.user;
+        if (currentUser) {
+            res.redirect('/');
+        } else {
+            res.render('sign-up', currentUser);
+        }
+    });
+// *******
+
+//my code____
+//     // SIGN UP FORM
+// app.get("/sign-up", (req, res) => {
+//   res.render("sign-up");
+// });
 
 // SIGN UP POST
 app.post("/sign-up", (req, res) => {
@@ -17,18 +32,15 @@ app.post("/sign-up", (req, res) => {
       var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
       res.redirect('/');
-    // .catch(err => {
-    //   console.log(err.message);
-    //   return res.status(400).send({ err: err });
-    // });
-});
+      })
+    .catch(err => {
+      console.log(err.message);
+      return res.status(400).send({ err: err });
+    });
 
 });
 
-// LOGIN FORM
- app.get('/login', (req, res) => {
-   res.render('login');
- });
+
 
  // LOGIN
 app.post("/login", (req, res) => {
@@ -56,9 +68,9 @@ app.post("/login", (req, res) => {
         res.redirect("/");
       });
     })
-    // .catch(err => {
-    //   console.log(err);
-    // });
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 // LOGOUT
@@ -66,6 +78,11 @@ app.get('/logout', (req, res) => {
   res.clearCookie('nToken');
   res.redirect('/');
 });
+
+// LOGIN FORM
+ app.get('/login', (req, res) => {
+   res.render('login');
+ });
 
 };
 
