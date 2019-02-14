@@ -4,16 +4,22 @@
         <ul>
             {{#each posts}}
             <li class="list-group-item">
-              <div class="lead">{{this.title}}</div>
+                <div class="lead">
+             <a href="/posts/{{this._id}}">{{this.title}}</a>
+             </div>
+              <!-- <div class="lead">{{this.title}}</div> -->
               {{#if this.url}}
               <a href="{{this.url}}" target="_blank">{{this.url}}<a>
                   {{/if}}
-              <div><small>{{this.author.username}}</small></div>
+
+                <div class="right">
+                  <a href="{{this.author.username}}">{{this.author.username}}</a>
+              <!-- <div><small>{{this.author.username}}</small></div> -->
               <div class="text-right">
                 <a href="/n/{{post.subreddit}}">{{post.subreddit}}<a>
               </div>
 
-              <form action="/posts/" + {{this._id}} + "/vote-up"" data-id="{{this._id}}" method="POST">
+              <form data-id="{{this._id}}">
                 <button type="submit">Vote Up</button>
 
               </form>

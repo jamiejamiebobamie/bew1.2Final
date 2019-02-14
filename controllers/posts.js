@@ -80,8 +80,8 @@ module.exports = (app) => {
     post.upVotes.push(req.user._id);
     post.voteScore = post.voteScore + 1;
     post.save();
-    res.redirect('/')
-    // res.status(200);
+    // res.redirect('/')
+    res.status(200);
   });
 });
 
