@@ -95,3 +95,8 @@ it("should be able to logout", function(done) {
   });
 });
 });
+
+
+// STRETCH CHALLENGE!!!
+// Can you write another test to test that it is impossible to create a post if a user is not logged in?
+// Can you make all of your auth tests not pass, and then pass? What about your newly updated post test?

@@ -28,6 +28,7 @@ const Comment = require('./models/comment');
 const comments = require('./controllers/comments.js')(app);
 const User = require('./models/user.js');
 const auth = require('./controllers/auth.js')(app);
+const replies = require('./controllers/replies.js')(app);
 
 const port = process.env.PORT || 13000;
 
@@ -57,6 +58,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'))
+
+app.use(express.static(path.join(__dirname, '/public')));
 
 // //heroku database.
 // mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes'), { useNewUrlParser: true });
