@@ -21,3 +21,9 @@ PostSchema
     .pre('find', Populate('author'))
 
 module.exports = mongoose.model("Post", PostSchema);
+
+//
+// STRETCH CHALLENGE!!
+// We only allow voting on the home and subreddit screens currently. Allow it on when viewing a single post.
+// Turn the Vote Up/Vote Down buttons into arrows using CSS and/or JS
+// Have the vote buttons color change after they've been clicked, and ensure the change is retained during the session (i.e. if you Vote Up, the button should be colored red and should stay that way until the vote changes).
