@@ -22,15 +22,9 @@ const expressValidator = require('express-validator');
 //middleware for putting something when you post it
 const methodOverride = require('method-override');
 
-const Post = require('./models/post');
-const posts = require('./controllers/posts')(app);
-const Comment = require('./models/comment');
-const comments = require('./controllers/comments.js')(app);
-const User = require('./models/user.js');
-const auth = require('./controllers/auth.js')(app);
-const replies = require('./controllers/replies.js')(app);
-
-const port = process.env.PORT || 13000;
+// Use Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var checkAuth = (req, res, next) => {
   console.log("Checking authentication");
@@ -46,9 +40,19 @@ var checkAuth = (req, res, next) => {
 };
 app.use(checkAuth);
 
-// Use Body Parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+const Post = require('./models/post');
+const posts = require('./controllers/posts')(app);
+const Comment = require('./models/comment');
+const comments = require('./controllers/comments.js')(app);
+const User = require('./models/user.js');
+const auth = require('./controllers/auth.js')(app);
+const replies = require('./controllers/replies.js')(app);
+
+const port = process.env.PORT || 13000;
+
+
+
+
 
 // Add after body parser initialization!
 app.use(expressValidator());

@@ -10,6 +10,7 @@ module.exports = (app) => {
             console.log(req.cookies);
             Post.find().populate('author')
             .then(posts => {
+                console.log(posts)
                 res.render('posts-index', { posts, currentUser });
                 // res.render('home', {});
             }).catch(err => {
@@ -79,8 +80,8 @@ module.exports = (app) => {
     post.upVotes.push(req.user._id);
     post.voteScore = post.voteScore + 1;
     post.save();
-
-    res.status(200);
+    res.redirect('/')
+    // res.status(200);
   });
 });
 
