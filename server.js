@@ -1,5 +1,13 @@
+const secret_salt = require('dotenv').config();
+
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
 const express = require('express');
 const app = express();
+
+app.use(cookieParser()); // Add this after you initialize express.
+
 const exphbs = require('express-handlebars');
 
 const mongoose = require('mongoose');
@@ -16,6 +24,10 @@ const methodOverride = require('method-override');
 
 const Post = require('./models/post');
 const posts = require('./controllers/posts')(app);
+const Comment = require('./models/comment');
+const comments = require('./controllers/comments.js')(app);
+const User = require('./models/user.js');
+const auth = require('./controllers/auth.js')(app);
 
 const port = process.env.PORT || 13000;
 
