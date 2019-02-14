@@ -3,8 +3,7 @@ const Comment = require('../models/comment');
 
 
 module.exports = function(app) {
-
-    module.exports = function (app) {
+    
         // CREATE Comment
         app.post("/posts/:postId/comments", function (req, res) {
             const comment = new Comment(req.body);

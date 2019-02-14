@@ -59,7 +59,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'))
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static('public'));
 
 // //heroku database.
 // mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes'), { useNewUrlParser: true });
