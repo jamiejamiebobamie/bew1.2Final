@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+      <h1>{{character.name}}</h1>
+    <p>{{character.summary}}</p>
+  </div>
+
+  {{#each character.storys}}
+    {{> story story=this characterId=../character._id}}
+  {{/each}}
+
+<a href="character.author.username._id/user-profile" class="lead">{{character.name}}</a>
+  <p>{{character.author.username}}</p>
+
+  <form action="/characters/{{character._id}}/storys" method="post">
+  <textarea class='form-control' name="content" placeholder="Story"></textarea>
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary">Add to this character's yarn!</button>
+  </div>
+</form>
+
+</div>

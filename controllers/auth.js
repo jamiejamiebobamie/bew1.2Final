@@ -86,6 +86,11 @@ app.get('/logout', (req, res) => {
  });
 
 };
+// 
+// /characters/:id
+// app.get('/user-profile/{{this.author.username._id}}', (req,res) => {
+//        res.render('login');
+// }
 
 // STRECTH CHALLENGE!!!
 // There is a lot more to make a full fledged authentication system. See which ones you want to try:
