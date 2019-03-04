@@ -47,7 +47,7 @@ const storys = require('./controllers/storys.js')(app);
 const User = require('./models/user.js');
 const auth = require('./controllers/auth.js')(app);``
 
-const port = process.env.PORT || 13000;
+const port = process.env.PORT || 9000;
 
 
 
