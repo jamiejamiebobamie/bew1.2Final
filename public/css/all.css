@@ -2,6 +2,12 @@
   margin-left: 20px;
 }
 
+h2:hover{
+    color: white;
+    background-color: black;
+
+}
+
 /* .right{
 
 }
