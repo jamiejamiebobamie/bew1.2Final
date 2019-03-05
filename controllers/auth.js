@@ -86,7 +86,7 @@ app.get('/logout', (req, res) => {
  });
 //
 
-// /characters/:id
+// /starters/:id
 app.get('/user-profile/:id', (req,res) => {
     var currentUser = req.user;
        res.render(`user-profile/${user._id}`);

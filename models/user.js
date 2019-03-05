@@ -8,7 +8,6 @@ const UserSchema = new Schema({
   password: { type: String, select: false },
   username: { type: String, required: true },
   starters : [{ type: Schema.Types.ObjectId, ref: "Starter" }],
-  //'storys' for simplicity instead of 'stories'
   threads : [{ type: Schema.Types.ObjectId, ref: "Thread" }]
 });
 

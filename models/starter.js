@@ -10,7 +10,7 @@ const StarterSchema = new Schema({
   age: {type: String, required: false},
   origin: { type: String, required: false },
   occupation: {type: String, required: false },
-  threads: [{ type: Schema.Types.ObjectId, ref: 'Thread' }],
+  threads: [{ type: Schema.Types.ObjectId, ref: "Thread" }],
   author : { type: Schema.Types.ObjectId, ref: "User", required: true },
   picture: {type: String, required: false}, //To be implemented later... 'TBIL'
 });

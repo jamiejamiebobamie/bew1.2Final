@@ -9,13 +9,15 @@ module.exports = function(app) {
 
         // CREATE thread
         app.post("/starters/:starterId/threads", function (req, res) {
+            const first_thread = req.params.starterId;
+            console.log("starter_id: " + first_thread)
             const thread = new Thread(req.body);
             thread.author = req.user._id;
             thread
                 .save()
                 .then(thread => {
                     return Promise.all([
-                        Starter.findById(req.params.starterId)
+                        Starter.findById(first_thread)
                     ]);
                 })
                 .then(([starter, user]) => {

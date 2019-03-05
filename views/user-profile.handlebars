@@ -2,34 +2,15 @@
 
     <div class="col-sm-8 col-sm-offset-2">
         <ul>
-            {{#each user.characters}}
+            {{#each user.starters}}
             <li class="list-group-item">
                 <div class="lead">
                     here
-             <a href="/characters/{{this._id}}">{{this.name}}</a>
+             <a href="/starters/{{this._id}}">{{this.name}}</a>
              </div>
-              <!-- <div class="lead">{{this.title}}</div> -->
-              <!-- {{#if this.url}}
-              <a href="{{this.url}}" target="_blank">{{this.url}}<a>
-                  {{/if}} -->
 
                 <div class="right">
                   <a href="user-profile/{{this.author.username._id}}">{{this.author.username}}</a>
-              <!-- <div><small>{{this.author.username}}</small></div> -->
-              <!-- <div class="text-right">
-                <a href="/n/{{post.subreddit}}">{{post.subreddit}}<a>
-              </div> -->
-
-              <!-- <form data-id="{{this._id}}">
-                <button type="submit">Vote Up</button>
-
-              </form>
-
-              <div class="voteScore">{{this.voteScore}}</div>
-
-              <form class="vote-down" data-id="{{this._id}}">
-                <button type="submit">Vote Down</button>
-              </form> -->
 
             </li>
             {{/each}}
