@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const Populate = require("../utils/autopopulate");
 
 const StarterSchema = new Schema({
-  url: { type: String, required: true },
-  name: { type: String, required: true },
-  summary: { type: String, required: true },
+  url: { type: String, required: false },
+  name: { type: String, required: false },
+  summary: { type: String, required: false },
   age: {type: String, required: false},
   origin: { type: String, required: false },
   occupation: {type: String, required: false },

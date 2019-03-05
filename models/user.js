@@ -7,9 +7,9 @@ const UserSchema = new Schema({
   updatedAt: { type: Date },
   password: { type: String, select: false },
   username: { type: String, required: true },
-  characters : [{ type: Schema.Types.ObjectId, ref: "Character" }],
+  starters : [{ type: Schema.Types.ObjectId, ref: "Starter" }],
   //'storys' for simplicity instead of 'stories'
-  storys : [{ type: Schema.Types.ObjectId, ref: "Story" }]
+  threads : [{ type: Schema.Types.ObjectId, ref: "Thread" }]
 });
 
 // Must use function here! ES6 => functions do not bind this!

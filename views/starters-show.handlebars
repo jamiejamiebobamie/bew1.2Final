@@ -1,21 +1,21 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-      <h1>{{character.name}}</h1>
-    <p>{{character.summary}}</p>
+      <h1>{{starter.name}}</h1>
+    <p>{{starter.summary}}</p>
   </div>
 
-  {{#each character.storys}}
-    {{> story story=this characterId=../character._id}}
+  {{#each starter.storys}}
+    {{> thread thread=this characterId=../starter._id}}
   {{/each}}
 
-<a href="user/{{user._id}}" class="lead">{{character.author.username}}</a>
+<a href="user/{{user._id}}" class="lead">{{starter.author.username}}</a>
 
 <h2><a href=""></a>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h2>
 <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h2>
   <!-- <p>{{character.author.username}}</p> -->
 
-  <form action="/characters/{{character._id}}/storys" method="post">
-  <textarea class='form-control' name="content" placeholder="Story"></textarea>
+  <form action="/starters/{{starter._id}}/threads" method="post">
+  <textarea class='form-control' name="content" placeholder="One more thread..."></textarea>
   <div class="text-right">
     <button type="submit" class="btn btn-primary">Add to this character's yarn!</button>
   </div>

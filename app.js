@@ -40,10 +40,10 @@ var checkAuth = (req, res, next) => {
 };
 app.use(checkAuth);
 
-const Character = require('./models/character');
-const characters = require('./controllers/characters')(app);
-const Story = require('./models/story');
-const storys = require('./controllers/storys.js')(app);
+const Starter = require('./models/starter');
+const starters = require('./controllers/starters')(app);
+const Thread = require('./models/thread');
+const threads = require('./controllers/threads.js')(app);
 const User = require('./models/user.js');
 const auth = require('./controllers/auth.js')(app);``
 
