@@ -64,18 +64,19 @@ module.exports = (app) => {
 
         // EDIT a compliment by clicking on the edit link in the shown compliment
         app.get('/starters/:id/edit', (req, res) => {
+            console.log("edit form")
             var currentUser = req.user;
           Starter.findById(req.params.id, function(err, starter) {
-            res.render('starters-edit', {starters: starter});
+            res.render('starters-edit', {starter: starter});
           })
       });
 
 
         // UPDATE... does this replace EDIT? ...guess not...
-        app.put('/compliments/:id', (req, res) => {
+        app.put('/starters/:id', (req, res) => {
         var currentUser = req.user;
-          Compliment.findByIdAndUpdate(req.params.id, req.body).then(compliment => {
-              res.redirect('/index');
+          Starter.findByIdAndUpdate(req.params.id, req.body).then(starter => {
+              res.redirect(`/starters/${starter._id}`);
             })
             .catch(err => {
               console.log(err.message)
@@ -87,8 +88,8 @@ module.exports = (app) => {
         app.delete('/starters/:id', function (req, res) {
           var currentUser = req.user;
           console.log("starter id: "+req.params.id)
-          Starter.findByIdAndRemove(req.params.id).then((starter) => {
-             res.redirect('/index');
+          Starter.findByIdAndRemove(req.params.id).then(starter => {
+             res.redirect('/');
           }).catch((err) => {
             console.log(err.message);
           })

@@ -22,10 +22,15 @@ const expressValidator = require('express-validator');
 //middleware for putting something when you post it
 const methodOverride = require('method-override');
 
-
 // Use Body Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Add after body parser initialization!
+app.use(expressValidator());
+
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
 
 var checkAuth = (req, res, next) => {
   console.log("Checking authentication");
@@ -47,21 +52,7 @@ const Thread = require('./models/thread');
 const threads = require('./controllers/threads.js')(app);
 const User = require('./models/user.js');
 const auth = require('./controllers/auth.js')(app);``
-
 const port = process.env.PORT || 9000;
-
-
-
-
-
-// Add after body parser initialization!
-app.use(expressValidator());
-
-//must come below const app, but before routes
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// override with POST having ?_method=DELETE or ?_method=PUT
-app.use(methodOverride('_method'))
 
 app.use(express.static('public'));
 
