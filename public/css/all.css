@@ -1,19 +1,52 @@
+body{
+    background-color: #f9f9f9;
+}
+
+.site_name_container{
+    display: flex;
+    justify-content: right;
+}
+
+.site_name{
+    /* color: grey; */
+    font-size: 7vw;
+    font-family: arial;
+    margin-left: 5vw;
+}
+
 .comment-indent {
-  margin-left: 20px;
+  margin-left: 1vw;
+  font-size: 10pt;
 }
 
 h1{
     margin-bottom: 3vw;
 }
 
-.author{
+h2{
+    margin: 3vw;
+}
+
+h3{
+    margin: 3vw;
+}
+
+/* .author{
     margin-right: 1vw;
-    /* color: white;
-    background-color: black; */
+    color: white;
+    background-color: black;
+} */
+
+.lead{
+      font-size: 15pt;
+}
+
+p{
+    color: black !important;
 }
 
 p:not(.text-right):hover{
-    color: white;
+    color: white !important;
     background-color: black;
 }
 

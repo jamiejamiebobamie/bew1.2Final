@@ -1,3 +1,7 @@
+<div class='site_name_container'>
+    <h1 class="site_name">A Good Yarn</h1>
+</div>
+{{#if currentUser}}
 <div class="row">
 
     <div class="col-sm-8 col-sm-offset-2">
@@ -33,3 +37,31 @@
     </div>
 
 </div>
+
+{{else}}
+    <article>
+        <section>
+            <h2>Sometimes a story is called a "yarn" as in "Spin me a yarn!"</h2>
+             <h2>Tell me a story.</h2>
+        </section>
+        <!-- <section>
+            <h3>
+            The three fates of Greek myth were Clotho, Atropos, and Lachesis.
+            Clotho would spin the thread of fate whenever a human was born, Lachesis would measure it, and Atropos would cut it when all was said and done.
+            </h3>
+        </section>
+        <section>
+            <h3>
+            Medieval weavers sewed tapestries to commemorate heroes, remember battles, or show us how maidens pet unicorns.
+            </h3>
+        </section> -->
+        <section>
+            <!-- <h3>
+            Throughout history we have been spinning yarns and telling talltales. It's time to take your place among the likes of Homer, Shakespeare, and my great-uncle Roger with the hairlip and the bad knee!
+            </h3> -->
+            <h2>
+            Please sign-up to begin. And remember: there is no better gift than a good story.
+            </h2>
+        </section>
+    </article>
+{{/if}}
