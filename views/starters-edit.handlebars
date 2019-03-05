@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <form method="POST" action="/starters/{{starter._id}}?_method=PUT">
+        <fieldset>
+    <legend>Because we all make mistakes...</legend>
+
+
+    <label for="starter-title"></label>
+    <input type="text" name="title" class="form-control" id="starter-title" placeholder="Your story needs a title, even a 'working' one...">
+
+    <label for="starter-content"></label>
+    <input type="text" name="content" class="form-control" id="starter-content" placeholder="Begin your tale here...">
+
+    <!-- Body // "Description" -->
+    <!-- <div class="form-group">
+      <label for="compliment-description">Compliment</label><br>
+      <textarea class="form-control" id="compliment-description" name="compliment" rows="10" />{{compliment.compliment}}</textarea>
+    </div> -->
+
+    <!-- Author // User -->
+    <!-- <div class="form-group">
+      <label for="compliment-autho">Author</label><br>
+      <input class="form-control" id="compliment-autho" type="text" name="author" value="{{compliment.author}}"/>
+    </div> -->
+
+    <!-- time stamp -->
+    <!-- <div class="form-group">
+      <input class="form-control" id="timestamp" type="hidden" name="timestamp" value="{{compliment.time}}" />
+    </div> -->
+
+    <!-- hashtag -->
+    <!-- <div class="form-group">
+      <label for="hashtag">Group</label><br>
+      <input class="form-control" id="hashtag" type="text" name="hashtag" value="{{compliment.hashtag}}" />
+    </div> -->
+
+
+  </fieldset>
+
+      <!-- BUTTON -->
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Save compliment</button>
+      </div>
+    </form>
+  </div>
+</div>
