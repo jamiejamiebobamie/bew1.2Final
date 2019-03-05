@@ -5,9 +5,9 @@
             {{#each starters}}
             <li class="list-group-item">
                 <div class="lead">
-             <a href="/starters/{{this._id}}">{{this.name}}</a>
+             <a href="/starters/{{this._id}}">{{this.title}}</a>
              </div>
-                  <div><small>{{this.summary}}</small></div>
+                  <div><small>{{this.content}}</small></div>
                 <div class="right">
                   <a href="user-profile/{{this.author.username._id}}">{{this.author.username}}</a>
 

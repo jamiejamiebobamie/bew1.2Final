@@ -2,10 +2,10 @@
   margin-left: 20px;
 }
 
-h2:hover{
-    color: white;
-    background-color: black;
-
+h1:hover{
+    margin: 1vw;
+    /* color: white;
+    background-color: black; */
 }
 
 /* .right{
