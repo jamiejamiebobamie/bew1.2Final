@@ -64,14 +64,16 @@ module.exports = (app) => {
 
         // EDIT a compliment by clicking on the edit link in the shown compliment
         app.get('/starters/:id/edit', (req, res) => {
+            var currentUser = req.user;
           Starter.findById(req.params.id, function(err, starter) {
-            res.render('starters-edit', {starters: content});
+            res.render('starters-edit', {starters: starter});
           })
       });
 
 
         // UPDATE... does this replace EDIT? ...guess not...
         app.put('/compliments/:id', (req, res) => {
+        var currentUser = req.user;
           Compliment.findByIdAndUpdate(req.params.id, req.body).then(compliment => {
               res.redirect('/index');
             })
@@ -82,9 +84,10 @@ module.exports = (app) => {
 
 
         // DELETE one compliment from the delete button on the "shown" compliment page
-        app.delete('/compliments/:id', function (req, res) {
-          console.log("DELETE compliment")
-          Compliment.findByIdAndRemove(req.params.id).then((compliment) => {
+        app.delete('/starters/:id', function (req, res) {
+          var currentUser = req.user;
+          console.log("starter id: "+req.params.id)
+          Starter.findByIdAndRemove(req.params.id).then((starter) => {
              res.redirect('/index');
           }).catch((err) => {
             console.log(err.message);

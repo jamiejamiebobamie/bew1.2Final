@@ -2,14 +2,15 @@
   <div class="col-sm-6 col-sm-offset-3">
     <form method="POST" action="/starters/{{starter._id}}?_method=PUT">
         <fieldset>
+    <h1>Edit</h1>
     <legend>Because we all make mistakes...</legend>
 
 
     <label for="starter-title"></label>
-    <input type="text" name="title" class="form-control" id="starter-title" placeholder="Your story needs a title, even a 'working' one...">
+    <input type="text" name="title" class="form-control" id="starter-title" placeholder="{{starters.title}}">
 
     <label for="starter-content"></label>
-    <input type="text" name="content" class="form-control" id="starter-content" placeholder="Begin your tale here...">
+    <input type="text" name="content" class="form-control" id="starter-content" placeholder="{{starters.content}}">
 
     <!-- Body // "Description" -->
     <!-- <div class="form-group">
@@ -34,13 +35,24 @@
       <input class="form-control" id="hashtag" type="text" name="hashtag" value="{{compliment.hashtag}}" />
     </div> -->
 
+             {{starters._id}}
+
 
   </fieldset>
 
       <!-- BUTTON -->
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">Save compliment</button>
+        <button class="btn btn-primary" type="submit">Save changes!</button>
       </div>
     </form>
+
+    <div>
+     <span style="float:right">
+         {{starter._id}}
+     <p><form method="POST" action="/starters/{{starters._id}}?_method=DELETE">
+         <button class="btn btn-primary" type="submit">Delete</button>
+     </form></p></span>
+   </div>
+
   </div>
 </div>
