@@ -62,6 +62,34 @@ module.exports = (app) => {
         });
 
 
+        // EDIT a compliment by clicking on the edit link in the shown compliment
+        app.get('/starters/:id/edit', (req, res) => {
+          Starter.findById(req.params.id, function(err, starter) {
+            res.render('starters-edit', {starters: content});
+          })
+      });
+
+
+        // UPDATE... does this replace EDIT? ...guess not...
+        app.put('/compliments/:id', (req, res) => {
+          Compliment.findByIdAndUpdate(req.params.id, req.body).then(compliment => {
+              res.redirect('/index');
+            })
+            .catch(err => {
+              console.log(err.message)
+            })
+        });
+
+
+        // DELETE one compliment from the delete button on the "shown" compliment page
+        app.delete('/compliments/:id', function (req, res) {
+          console.log("DELETE compliment")
+          Compliment.findByIdAndRemove(req.params.id).then((compliment) => {
+             res.redirect('/index');
+          }).catch((err) => {
+            console.log(err.message);
+          })
+      });
 
 };
 

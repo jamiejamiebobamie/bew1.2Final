@@ -36,4 +36,27 @@ module.exports = function(app) {
                     console.log(err);
                 });
         });
+
+        // SHOW
+        app.get("/starters/:id/thread/:id/edit", function (req, res) {
+            var currentUser = req.user;
+            Starter.findById(req.params.id).populate('threads').lean()
+                .then(starter => {
+                    res.render("starters-show", { starter, currentUser });
+                })
+                .catch(err => {
+                    console.log(err.message);
+                });
+        });
+
+         // DELETE
+         app.delete('/starters/:id/threads/:id', function (req, res) {
+             console.log("DELETE thread")
+             Thread.findByIdAndRemove(req.params.id).then((thread) => {
+                 res.redirect(`/starters/${req.params.starterId}`);
+             }).catch((err) => {
+                 console.log(err.message);
+             })
+         });
+
     };
