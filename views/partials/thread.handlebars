@@ -1,5 +1,10 @@
 <div class="col-xs-12 comment-indent">
     <!-- <div> -->
-        <a href="starter/{{starter._id}}/thread/{{starter._id}}/edit" class="lead"><p>{{thread.content}}</p></a>
+    <div>goodbye{{thread.content}}</div>
+    <!-- {{thread._id}} -->
+    <div>hi {{thread._id}}</div>
+    <div>hello {{thread.starter._id}}</div>
+
+    <a href="starters/{{thread.starter._id}}/threads/{{thread._id}}/edit" class="lead"><p>{{thread.content}}</p></a>
     <p class="text-right">{{thread.author.username}}</p>
 </div>

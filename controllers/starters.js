@@ -22,11 +22,13 @@ module.exports = (app) => {
 
     // GET NEW POST FORM
     app.get('/starters/new', (req, res) => {
+        var currentUser = req.user;
         res.render('starters-new');
     })
 
     // CREATE
         app.post("/starters/new", (req, res) => {
+            var currentUser = req.user;
             if (req.user) {
                 var starter = new Starter(req.body);
                 starter.author = req.user._id;
@@ -49,6 +51,7 @@ module.exports = (app) => {
                 return res.status(401); // UNAUTHORIZED
             }
         });
+
         // SHOW
         app.get("/starters/:id", function (req, res) {
             var currentUser = req.user;

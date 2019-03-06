@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+
+    <form method="POST" action="/starters/starters/{{thread.starter._id}}/threads/{{thread._id}}?_method=PUT">
+        <fieldset>
+    <h1>Edit</h1>
+    <legend>Because we all make mistakes...</legend>
+
+    <div>goodbye{{thread.content}}</div>
+    <!-- {{thread._id}} -->
+    <div>hi {{thread._id}}</div>
+    <div>hello {{thread.starter._id}}</div>
+    <!-- <div>hi{{user}}</div> -->
+
+    <!-- <h2>{{starter.title}}</h2> -->
+
+    <label for="thread-content"></label>
+    <input type="text" name="content" class="form-control" id="thread-content" placeholder="{{thread.content}}">
+
+  </fieldset>
+
+      <!-- BUTTON -->
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Save changes!</button>
+      </div>
+    </form>
+
+    <div>
+     <span style="float:right">
+     <p><form method="POST" action="/starters/starters/{{thread.starter._id}}/threads/{{thread._id}}?_method=DELETE">
+         <button class="btn btn-primary" type="submit">Delete thread</button>
+     </form></p></span>
+   </div>
+
+  </div>
+</div>
