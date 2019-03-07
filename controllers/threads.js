@@ -81,7 +81,7 @@ module.exports = function(app) {
         // Starter.findById(req.params.id).then(starter => {
           Thread.findById(threadId, function(err, thread) {
               // console.log("this is the thread: " + thread)
-            res.render('threads-edit', {thread: thread});
+            res.render('threads-edit', {thread, currentUser});
           })
       });
   // });

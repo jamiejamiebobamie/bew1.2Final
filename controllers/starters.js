@@ -23,7 +23,7 @@ module.exports = (app) => {
     // GET NEW POST FORM
     app.get('/starters/new', (req, res) => {
         var currentUser = req.user;
-        res.render('starters-new');
+        res.render('starters-new', { currentUser });
     })
 
     // CREATE
@@ -72,7 +72,7 @@ module.exports = (app) => {
             console.log("edit form")
             var currentUser = req.user;
           Starter.findById(req.params.id, function(err, starter) {
-            res.render('starters-edit', {starter: starter});
+            res.render('starters-edit', {starter, currentUser });
           })
       });
 
