@@ -55,7 +55,7 @@ module.exports = function(app) {
         // });
 
         // EDIT a compliment by clicking on the edit link in the shown compliment
-        app.get('/starters/starters/:starterId/threads/:threadId/edit', (req, res) => {
+        app.get('/starters/:starterId/threads/:threadId/edit', (req, res) => {
             const save = req.originalUrl
             let count = 0;
             let starterId = "";
@@ -63,20 +63,20 @@ module.exports = function(app) {
             for(i=0; i< save.length; i++){
                 if (save[i] == "/" || save[i] == "?"){
                     count+=1}
-                else if (count == 3 && save[i] != "/" && save[i] != "?"){
+                else if (count == 2 && save[i] != "/" && save[i] != "?"){
                     starterId += save[i]
                 }
-                else if (count == 5 && save[i] != "/" && save[i] != "?"){
+                else if (count == 4 && save[i] != "/" && save[i] != "?"){
                     threadId += save[i]
                 }
             }
-            // console.log("this is the url" + save)
+            console.log("this is the url" + save)
             // const starterId = save.substring(19,43)
             // const threadId = save.substring(53,)
-            // console.log("this is the starterId " + starterId)
-            // console.log("this is the threadId " + threadId)
+            console.log("this is the starterId " + starterId)
+            console.log("this is the threadId " + threadId)
 
-            // console.log("edit form: " + req)
+            console.log("edit form: " + req.params)
             var currentUser = req.user;
         // Starter.findById(req.params.id).then(starter => {
           Thread.findById(threadId, function(err, thread) {
@@ -87,57 +87,87 @@ module.exports = function(app) {
   // });
 
 
-        // UPDATE... does this replace EDIT? ...guess not...
-        app.put('/starters/starters/:starterId/threads/:threadId', (req, res) => {
-            const save = req.originalUrl
-            let count = 0;
-            let starterId = "";
-            let threadId = "";
-            for(i=0; i< save.length; i++){
-                if (save[i] == "/" || save[i] == "?"){
-                    count+=1}
-                else if (count == 3 && save[i] != "/" && save[i] != "?"){
-                    starterId += save[i]
-                }
-                else if (count == 5 && save[i] != "/" && save[i] != "?"){
-                    threadId += save[i]
-                }
-            }
-        var currentUser = req.user;
-        Thread.findById(threadId).then(thread => {
+  // UPDATE... does this replace EDIT? ...guess not...
+  app.put('/starters/:starterId/threads/:threadId', (req, res) => {
+      const save = req.originalUrl
+      let count = 0;
+      let starterId = "";
+      let threadId = "";
+      for(i=0; i< save.length; i++){
+          if (save[i] == "/" || save[i] == "?"){
+              count+=1}
+          else if (count == 2 && save[i] != "/" && save[i] != "?"){
+              starterId += save[i]
+          }
+          else if (count == 4 && save[i] != "/" && save[i] != "?"){
+              threadId += save[i]
+          }
+      }
+      console.log("this is the url" + save)
+      // const starterId = save.substring(19,43)
+      // const threadId = save.substring(53,)
+      console.log("this is the starterId " + starterId)
+      console.log("this is the threadId " + threadId)
+  var currentUser = req.user;
+    Thread.findByIdAndUpdate(threadId, req.body).then(thread => {
+        res.redirect(`/starters/${starterId}`);
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  });
         //
-        //     console.log("stuff " + thread + threadId)
-        //     return Promise.all([
-        //         thread.content = req.body,
-        //         thread.save()
+        // // UPDATE... does this replace EDIT? ...guess not...
+        // app.put('/starters/starters/:starterId/threads/:threadId', (req, res) => {
+        //     const save = req.originalUrl
+        //     let count = 0;
+        //     let starterId = "";
+        //     let threadId = "";
+        //     for(i=0; i< save.length; i++){
+        //         if (save[i] == "/" || save[i] == "?"){
+        //             count+=1}
+        //         else if (count == 3 && save[i] != "/" && save[i] != "?"){
+        //             starterId += save[i]
+        //         }
+        //         else if (count == 5 && save[i] != "/" && save[i] != "?"){
+        //             threadId += save[i]
+        //         }
+        //     }
+        // var currentUser = req.user;
+        // Thread.findById(threadId).then(thread => {
+        // //
+        // //     console.log("stuff " + thread + threadId)
+        // //     return Promise.all([
+        // //         thread.content = req.body,
+        // //         thread.save()
+        // //
+        // //     ]);
+        //     // console.log(thread, req.body, thread.content)
         //
-        //     ]);
-            // console.log(thread, req.body, thread.content)
-
-            // thread.save();
-            // console.log("stuff " + thread + req.body + thread.content)
-        // Thread.findOneAndUpdate(threadId, req.body.content).then(thread => {
-            console.log("url=" + save + " threadId's " + threadId + " " + thread._id + " " + thread + " " + req.body)
-             res.redirect(`/starters/${starterId}`);
-           })
-         // Thread.findByIdAndUpdate(threadId, req.body).then(thread => {
-         //     console.log(threadId, req.body, thread.content, thread)
-         //         return Promise.all([
-         //             thread.content = req.body,
-         //             thread.save()
-         //
-         //         ]);
-         //
-         //      res.redirect(`/starters/${starterId}`);
-         //    })
-            .catch(err => {
-              console.log(err.message)
-            })
-        });
+        //     // thread.save();
+        //     // console.log("stuff " + thread + req.body + thread.content)
+        // // Thread.findOneAndUpdate(threadId, req.body.content).then(thread => {
+        //     console.log("url=" + save + " threadId's " + threadId + " " + thread._id + " " + thread + " " + req.body)
+        //      res.redirect(`/starters/${starterId}`);
+        //    })
+        //  // Thread.findByIdAndUpdate(threadId, req.body).then(thread => {
+        //  //     console.log(threadId, req.body, thread.content, thread)
+        //  //         return Promise.all([
+        //  //             thread.content = req.body,
+        //  //             thread.save()
+        //  //
+        //  //         ]);
+        //  //
+        //  //      res.redirect(`/starters/${starterId}`);
+        //  //    })
+        //     .catch(err => {
+        //       console.log(err.message)
+        //     })
+        // });
 
 
         // DELETE one compliment from the delete button on the "shown" compliment page
-        app.delete('/starters/starters/:starterId/threads/:threadId', function (req, res) {
+        app.delete('/starters/:starterId/threads/:threadId', function (req, res) {
           var currentUser = req.user;
           const save = req.originalUrl
           let count = 0;
@@ -146,15 +176,15 @@ module.exports = function(app) {
           for(i=0; i< save.length; i++){
               if (save[i] == "/" || save[i] == "?"){
                   count+=1}
-              else if (count == 3 && save[i] != "/" && save[i] != "?"){
+              else if (count == 2 && save[i] != "/" && save[i] != "?"){
                   starterId += save[i]
               }
-              else if (count == 5 && save[i] != "/" && save[i] != "?"){
+              else if (count == 4 && save[i] != "/" && save[i] != "?"){
                   threadId += save[i]
               }
           }
-          // console.log("thread id for delete: "+threadId)
-          // console.log("thread id for delete: "+save)
+          console.log("thread id for delete: "+threadId)
+          console.log("thread id for delete: "+save)
 
           Thread.findByIdAndRemove(threadId).then(thread => {
              res.redirect(`/starters/${starterId}`);
