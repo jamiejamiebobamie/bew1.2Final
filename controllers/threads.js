@@ -9,6 +9,7 @@ module.exports = function(app) {
 
         // CREATE thread
         app.post("/starters/:starterId/threads", function (req, res) {
+            var currentUser = req.user;
             // const first_thread = req.params.starterId;
             // console.log("starter_id: " + first_thread)
             const thread = new Thread(req.body);
@@ -103,7 +104,7 @@ module.exports = function(app) {
                 }
             }
         var currentUser = req.user;
-        // Thread.findById(threadId).then(thread => {
+        Thread.findById(threadId).then(thread => {
         //
         //     console.log("stuff " + thread + threadId)
         //     return Promise.all([
@@ -115,7 +116,7 @@ module.exports = function(app) {
 
             // thread.save();
             // console.log("stuff " + thread + req.body + thread.content)
-        Thread.findOneAndUpdate(threadId , req.body).then(thread => {
+        // Thread.findOneAndUpdate(threadId, req.body.content).then(thread => {
             console.log("url=" + save + " threadId's " + threadId + " " + thread._id + " " + thread + " " + req.body)
              res.redirect(`/starters/${starterId}`);
            })

@@ -33,6 +33,7 @@ module.exports = (app) => {
                 var starter = new Starter(req.body);
                 starter.author = req.user._id;
                 starter.url = `/starters/${starter._id}`;
+                url = `/starters/${starter._id}`
                 starter
                     .save()
                     .then(starter => {
@@ -41,8 +42,8 @@ module.exports = (app) => {
                     .then(user => {
                         user.starters.unshift(starter);
                         user.save();
-                        // REDIRECT TO THE NEW POST
-                        res.redirect(`/starters/${starter._id}`);
+                        // REDIRECT TO THE NEW Starter
+                        res.redirect(`${url}`);
                     })
                     .catch(err => {
                         console.log(err.message);
@@ -50,6 +51,7 @@ module.exports = (app) => {
             } else {
                 return res.status(401); // UNAUTHORIZED
             }
+
         });
 
         // SHOW
