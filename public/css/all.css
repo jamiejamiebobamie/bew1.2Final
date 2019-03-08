@@ -75,3 +75,13 @@ p:not(.text-right):hover{
     align-content: center;
     justify-content: center;
 } */
+
+.getStoryIcon{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.logo{
+transform: scale(.2);
+}
