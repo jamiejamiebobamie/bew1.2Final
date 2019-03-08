@@ -11,6 +11,7 @@ const StarterSchema = new Schema({
   content: { type: String, required: false },
   threads: [{ type: Schema.Types.ObjectId, ref: "Thread" }],
   author : { type: Schema.Types.ObjectId, ref: "User", required: false },
+  authorName: { type: String, required: false },
 
   name: { type: String, required: false },
   url: { type: String, required: false },

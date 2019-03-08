@@ -38,6 +38,7 @@ module.exports = (app) => {
                 //         res.render('errorTakenTitle', {currentUser, message: "Error: The title of your story must be unique. Someone has already submitted a story with that title."})
                     } else {
                 var starter = new Starter(req.body);
+                starter.authorName = req.user.username
                 starter.author = req.user._id;
                 starter.url = `/starters/${starter._id}`;
                 // url = `/starters/${starter._id}`
@@ -65,12 +66,42 @@ module.exports = (app) => {
 
         // SHOW
         app.get("/starters/:id", function (req, res) {
+            // let story = ""
+            // let count = 0
+            var currentUser = req.user;
+            Starter.findById(req.params.id).populate('threads').lean()
+                .then(starter => {
+//                     story+=starter.content + " "
+//                     count+=1
+//                     starter.threads.forEach(function(thread){
+// //the logic and implementation of this is flawed. Supposed to create new paragraphs after 5 sentences...
+//                         if (count < 5){
+//                             story += thread.content + " "
+//                             count += 1
+//                         } else {
+//                             story += "\n\n"
+//                             count = 0
+//                         }
+//                     })
+                    // console.log(story)
+                    res.render("starters-show", { starter, currentUser });
+                })
+                .catch(err => {
+                    console.log(err.message);
+                });
+        });
+
+        //SHOW FORMATTED STORY
+
+        app.get("/starters/:id/yarn", function (req, res) {
+            let authors = "by "
             let story = ""
             let count = 0
             var currentUser = req.user;
             Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
                     story+=starter.content + " "
+                    authors+= starter.authorName + " "
                     count+=1
                     starter.threads.forEach(function(thread){
 //the logic and implementation of this is flawed. Supposed to create new paragraphs after 5 sentences...
@@ -81,14 +112,17 @@ module.exports = (app) => {
                             story += "\n\n"
                             count = 0
                         }
+                        authors+= "and " + thread.authorName + " "
                     })
                     console.log(story)
-                    res.render("starters-show", { starter, currentUser });
+                    res.render("starters-show-story", { currentUser, starter, story, authors });
                 })
                 .catch(err => {
                     console.log(err.message);
                 });
         });
+
+
 
 
         // EDIT a compliment by clicking on the edit link in the shown compliment

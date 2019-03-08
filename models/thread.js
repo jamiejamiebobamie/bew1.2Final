@@ -6,7 +6,8 @@ const ThreadSchema = new Schema({
   content: { type: String, required: true },
   author : { type: Schema.Types.ObjectId, ref: "User", required: false },
   starter: { type: Schema.Types.ObjectId, ref: "Starter", required: false },
-  starter_author: { type: Schema.Types.ObjectId, ref: "User", required: false }
+  starter_author: { type: Schema.Types.ObjectId, ref: "User", required: false },
+  authorName: { type: String, required: false }
 });
 
 // Always populate the author field

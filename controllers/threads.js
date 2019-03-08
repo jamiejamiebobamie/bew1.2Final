@@ -14,7 +14,7 @@ module.exports = function(app) {
             // console.log("starter_id: " + first_thread)
             const thread = new Thread(req.body);
             thread.author = req.user._id;
-
+            thread.authorName = req.user.username
             thread
                 .save()
                 .then(thread => {
