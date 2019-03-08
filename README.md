@@ -17,6 +17,7 @@ Below I will give an explanation of some of the API's more-useful routes.
 
 
 LOOK UP A USER PROFILE:
+
 https://a-good-yarn.herokuapp.com/user-profile/:userId
 
 If you would like to view user stats, please enter their user Id after 'user-profile/'
@@ -25,6 +26,7 @@ A user's Id can be found in the url after first navigating to their profile page
 ![alt text](./public/readmeIMGs/user-profile.png)
 
 VIEW STORY IN READER-MODE:
+
 https://a-good-yarn.herokuapp.com/starters/:starterId/yarn
 
 If you would like to view a story in a more readable format, enter the Id of the story-starter followed by '/yarn'. The starter Id can be found in the url after first navigating to the story. You can also click on the yarn icon at the bottom of the story screen to view the story in reader mode.
