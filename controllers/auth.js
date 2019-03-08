@@ -102,7 +102,7 @@ app.get('/user-profile/:id', (req,res) => {
     console.log(userId)
     User.findById(userId)
       .then(user => {
-       res.render('user-profile', {user: user, currentUser});
+       res.render('user-profile', {user: user, currentUser, date: user.createdAt.toDateString()});
 });
 });
 
