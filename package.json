@@ -1,16 +1,16 @@
 {
-  "name": "AnEpicThread",
+  "name": "AGoodYarn",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/jamiejamiebobamie/bew1.2Final"
   },
-  "author": "",
+  "author": "Jamie McCrory",
   "license": "ISC",
   "bugs": {
     "url": ""

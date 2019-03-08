@@ -59,10 +59,10 @@ const port = process.env.PORT || 9000;
 app.use(express.static('public'));
 
 // //heroku database.
-// mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost/final'), { useNewUrlParser: true });
+mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost/final-db'), { useNewUrlParser: true });
 
 // local host database
-mongoose.connect('mongodb://localhost/final');
+// mongoose.connect('mongodb://localhost/final');
 
 //views middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
