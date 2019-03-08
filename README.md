@@ -1,6 +1,6 @@
-This is a final project for my backend web class (BEW1.2) at Make School, San Francisco.
+This is the final project for my backend web class (BEW1.2) at Make School, San Francisco.
 
-The purpose of this project was to create a RESTful API using MVC 'architecture' that makes use of secure log-in/log-out features, has more than 1 nested route, and with CRUD-able resources.
+The purpose of this project was to create a RESTful API using MVC 'architecture' that makes use of secure log-in/log-out features, has more than 1 nested route, and has CRUD-able resources.
 
 I decided to build a "shared-story platform" called "Yarn" that allows users to post story-starters or "starters" that then can be added to by the same user or other users. These additions to the story, I decided to call "threads".
 
@@ -8,7 +8,7 @@ I decided to build a "shared-story platform" called "Yarn" that allows users to 
 
 To use the app, navigate in your browser to: https://a-good-yarn.herokuapp.com.
 
-If you'd like to contribute to this project. Feel free to reach out to me via email at jamie.mccrory@students.makeschool.com! Especially if you are a frontend developer, I have some ideas for how I would like the site to look.
+If you'd like to contribute to this project. Feel free to reach out to me via email at jamie.mccrory@students.makeschool.com, especially if you are a frontend developer! I have some ideas for how I would like the site to look.
 
 
 Below I will give an explanation of some of the API's more-useful routes.
