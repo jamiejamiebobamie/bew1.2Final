@@ -17,18 +17,10 @@ module.exports = app => {
     });
 // *******
 
-//my code____
-//     // SIGN UP FORM
-// app.get("/sign-up", (req, res) => {
-//   res.render("sign-up");
-// });
-
 // SIGN UP POST
 app.post("/sign-up", (req, res) => {
   // Create User and JWT
   const user = new User(req.body);
-  console.log(req.body)
-
   user.save().then((user) => {
       var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
@@ -86,7 +78,7 @@ app.get('/logout', (req, res) => {
  });
 //
 
-// /starters/:id
+// /user-profile route
 app.get('/user-profile/:id', (req,res) => {
     var currentUser = req.user;
     const save = req.originalUrl
@@ -99,7 +91,6 @@ app.get('/user-profile/:id', (req,res) => {
             userId += save[i]
         }
     }
-    console.log(userId)
     User.findById(userId)
       .then(user => {
        res.render('user-profile', {user: user, currentUser, date: user.createdAt.toDateString()});
@@ -107,10 +98,3 @@ app.get('/user-profile/:id', (req,res) => {
 });
 
 };
-
-// STRECTH CHALLENGE!!!
-// There is a lot more to make a full fledged authentication system. See which ones you want to try:
-//
-// Add a Remember Me checkbox. What is the difference from when it is checked or not?
-// Require a password confirmation field.
-// Plan out how you would do a "forget password" process.

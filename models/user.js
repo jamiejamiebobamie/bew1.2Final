@@ -3,8 +3,6 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 const uniqueValidator = require('mongoose-unique-validator');
 
-// var mySchema = mongoose.Schema(/* put your schema definition here */);
-
 const UserSchema = new Schema({
   createdAt: { type: Date },
   updatedAt: { type: Date },

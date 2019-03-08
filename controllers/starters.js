@@ -8,13 +8,11 @@ module.exports = (app) => {
     // INDEX
         app.get('/', (req, res) => {
             var currentUser = req.user;
-            // res.render('home', {});
             console.log(req.cookies);
             Starter.find().populate('author')
             .then(starters => {
                 console.log(starters)
                 res.render('starters-index', { starters, currentUser });
-                // res.render('home', {});
             }).catch(err => {
                 console.log(err.message);
             })
@@ -32,16 +30,11 @@ module.exports = (app) => {
             if (req.user) {
                 if (req.body.title == "" || req.body.content == ""){
                     res.render('errorNewStarter', {currentUser});
-                // } else { // not working correctly. how do i check from here if the title is a repeat?
-                //     console.log("unique? "+ req.body.title)
-                //     if (!req.body.title.unique){
-                //         res.render('errorTakenTitle', {currentUser, message: "Error: The title of your story must be unique. Someone has already submitted a story with that title."})
                     } else {
                 var starter = new Starter(req.body);
                 starter.authorName = req.user.username
                 starter.author = req.user._id;
                 starter.url = `/starters/${starter._id}`;
-                // url = `/starters/${starter._id}`
                 starter
                     .save()
                     .then(starter => {
@@ -56,7 +49,6 @@ module.exports = (app) => {
                     .catch(err => {
                         console.log(err.message);
                     });
-                // }
             }
             } else {
                 return res.status(401); // UNAUTHORIZED
@@ -66,24 +58,9 @@ module.exports = (app) => {
 
         // SHOW
         app.get("/starters/:id", function (req, res) {
-            // let story = ""
-            // let count = 0
             var currentUser = req.user;
             Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
-//                     story+=starter.content + " "
-//                     count+=1
-//                     starter.threads.forEach(function(thread){
-// //the logic and implementation of this is flawed. Supposed to create new paragraphs after 5 sentences...
-//                         if (count < 5){
-//                             story += thread.content + " "
-//                             count += 1
-//                         } else {
-//                             story += "\n\n"
-//                             count = 0
-//                         }
-//                     })
-                    // console.log(story)
                     res.render("starters-show", { starter, currentUser });
                 })
                 .catch(err => {
@@ -168,9 +145,3 @@ module.exports = (app) => {
       });
 
 };
-
-//
-// STRETCH CHALLENGE!!
-// Can you make an author's username a link that displays that users's profile at /users/:username?
-// Can you do the same for comments?
-// Can you make a /profile route that loads the current user and displays their starters and comments?

@@ -8,7 +8,6 @@ body{
 }
 
 .site_name{
-    /* color: grey; */
     font-size: 7vw;
     font-family: arial;
     margin-left: 5vw;
@@ -43,12 +42,6 @@ h3{
     text-indent: 3vw;
 }
 
-/* .author{
-    margin-right: 1vw;
-    color: white;
-    background-color: black;
-} */
-
 .lead{
       font-size: 15pt;
 }
@@ -61,24 +54,6 @@ p:not(.text-right):hover{
     color: white !important;
     background-color: black;
 }
-
-/* .right{
-
-}
-/*
-.col-sm-8{
-    display: flex;
-
-} */
-/* .list-group-item{
-    display: flex;
-} */
-
-/* .col-xs-12{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-} */
 
 .getStoryIcon{
     display: flex;
