@@ -115,6 +115,9 @@ module.exports = function(app) {
   });
   } else {
     Thread.findByIdAndUpdate(threadId, req.body).then(thread => {
+        thread.authorName = req.user.username
+        thread.author = req.user._id;
+        thread.save()
         res.redirect(`/starters/${starterId}`);
       })
       .catch(err => {

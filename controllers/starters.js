@@ -145,6 +145,9 @@ module.exports = (app) => {
         });
         } else {
           Starter.findByIdAndUpdate(req.params.id, req.body).then(starter => {
+              starter.authorName = req.user.username
+              starter.author = req.user._id;
+              starter.save()
               res.redirect(`/starters/${starter._id}`);
             })
             .catch(err => {
