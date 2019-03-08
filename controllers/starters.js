@@ -32,9 +32,10 @@ module.exports = (app) => {
             if (req.user) {
                 if (req.body.title == "" || req.body.content == ""){
                     res.render('errorNewStarter', {currentUser});
-                } else {
-                    if (!req.body.title.unique){
-                        res.render('errorTakenTitle', {currentUser, message: "Error: The title of your story must be unique. Someone has already submitted a story with that title."})
+                // } else { // not working correctly. how do i check from here if the title is a repeat?
+                //     console.log("unique? "+ req.body.title)
+                //     if (!req.body.title.unique){
+                //         res.render('errorTakenTitle', {currentUser, message: "Error: The title of your story must be unique. Someone has already submitted a story with that title."})
                     } else {
                 var starter = new Starter(req.body);
                 starter.author = req.user._id;
@@ -54,7 +55,7 @@ module.exports = (app) => {
                     .catch(err => {
                         console.log(err.message);
                     });
-                }
+                // }
             }
             } else {
                 return res.status(401); // UNAUTHORIZED
@@ -64,9 +65,24 @@ module.exports = (app) => {
 
         // SHOW
         app.get("/starters/:id", function (req, res) {
+            let story = ""
+            let count = 0
             var currentUser = req.user;
             Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
+                    story+=starter.content + " "
+                    count+=1
+                    starter.threads.forEach(function(thread){
+//the logic and implementation of this is flawed. Supposed to create new paragraphs after 5 sentences...
+                        if (count < 5){
+                            story += thread.content + " "
+                            count += 1
+                        } else {
+                            story += "\n"
+                            count = 0
+                        }
+                    })
+                    console.log(story)
                     res.render("starters-show", { starter, currentUser });
                 })
                 .catch(err => {

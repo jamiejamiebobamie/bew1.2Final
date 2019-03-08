@@ -19,7 +19,14 @@ body{
   font-size: 10pt;
 }
 
+.titleContainer{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 h1{
+    align-self: center;
     margin-bottom: 3vw;
 }
 
@@ -61,4 +68,10 @@ p:not(.text-right):hover{
 } */
 /* .list-group-item{
     display: flex;
+} */
+
+/* .col-xs-12{
+    display: flex;
+    align-content: center;
+    justify-content: center;
 } */
