@@ -92,7 +92,6 @@ module.exports = (app) => {
         });
 
         //SHOW FORMATTED STORY
-
         app.get("/starters/:id/yarn", function (req, res) {
             let authors = "by "
             let authorsArray = [] // implement tomorrow

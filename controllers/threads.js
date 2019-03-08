@@ -118,6 +118,7 @@ module.exports = function(app) {
         thread.authorName = req.user.username
         thread.author = req.user._id;
         thread.save()
+        console.log(thread.author, thread.authorName)
         res.redirect(`/starters/${starterId}`);
       })
       .catch(err => {
