@@ -78,7 +78,7 @@ module.exports = (app) => {
                             story += thread.content + " "
                             count += 1
                         } else {
-                            story += "\n"
+                            story += "\n\n"
                             count = 0
                         }
                     })
