@@ -95,6 +95,7 @@ module.exports = (app) => {
 
         app.get("/starters/:id/yarn", function (req, res) {
             let authors = "by "
+            let authorsArray = [] // implement tomorrow
             let story = ""
             let count = 0
             var currentUser = req.user;

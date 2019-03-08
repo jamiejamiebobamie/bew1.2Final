@@ -27,12 +27,16 @@
       </div>
     </form>
 
-    <div>
-     <span style="float:right">
-     <p><form method="POST" action="/starters/{{thread.starter._id}}/threads/{{thread._id}}?_method=DELETE">
-         <button class="btn btn-primary" type="submit">Delete thread</button>
-     </form></p></span>
-   </div>
+   <div class='edit'>
+        <span style="float:left">
+        <p><form method="" action="/starters/{{thread.starter._id}}">
+            <button class="btn btn-primary" type="submit">Back</button>
+        </form></p></span>
+    <span style="float:right">
+    <p><form method="POST" action="/starters/{{thread.starter._id}}/threads/{{thread._id}}?_method=DELETE">
+        <button class="btn btn-primary" type="submit">Delete Thread</button>
+    </form></p></span>
+  </div>
 
   </div>
 </div>

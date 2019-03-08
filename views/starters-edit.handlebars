@@ -20,7 +20,13 @@
       </div>
     </form>
 
-    <div>
+
+
+    <div class='edit'>
+         <span style="float:left">
+         <p><form method="" action="/starters/{{starter._id}}">
+             <button class="btn btn-primary" type="submit">Back</button>
+         </form></p></span>
      <span style="float:right">
      <p><form method="POST" action="/starters/{{starter._id}}?_method=DELETE">
          <button class="btn btn-primary" type="submit">Delete ENTIRE Story Thread</button>

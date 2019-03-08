@@ -25,6 +25,10 @@ body{
     justify-content: center;
 }
 
+.edit{
+    margin: 3vw;
+}
+
 h1{
     align-self: center;
     margin-bottom: 3vw;
