@@ -6,7 +6,9 @@ I decided to build a "shared-story platform" called "Yarn" that allows users to 
 
 ![alt text](./public/readmeIMGs/yarn_icon.png)
 
-To use the app, navigate in your browser to: https://a-good-yarn.herokuapp.com.
+To use the app, navigate in your browser to:
+
+https://a-good-yarn.herokuapp.com.
 
 If you'd like to contribute to this project. Feel free to reach out to me via email at jamie.mccrory@students.makeschool.com, especially if you are a frontend developer! I have some ideas for how I would like the site to look.
 
