@@ -1,20 +1,24 @@
 <div class="row">
 
     <div class="col-sm-8 col-sm-offset-2">
-        <ul>
+
+        <h1>User: {{user.username}}</h1>
+
+        <div>Number of stories started: {{user.starters.length}}</div>
+        <div>Number of threads contributed: {{user.starters.length}}</div>
+        <!-- <ul>
+
             {{#each user.starters}}
             <li class="list-group-item">
                 <div class="lead">
-                    here
-             <a href="/starters/{{this._id}}">{{this.name}}</a>
+
+             <a href="/starters/{{starter._id}}">{{starter.name}}</a>
              </div>
-
                 <div class="right">
-                  <a href="user-profile/{{this.author._id}}">{{this.author.username}}</a>
-
+                  <a href="user-profile/{{starter.author._id}}">{{starter.author.username}}</a>
             </li>
             {{/each}}
-        </ul>
+        </ul> -->
     </div>
 
 </div>

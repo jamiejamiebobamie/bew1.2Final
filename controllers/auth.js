@@ -89,8 +89,23 @@ app.get('/logout', (req, res) => {
 // /starters/:id
 app.get('/user-profile/:id', (req,res) => {
     var currentUser = req.user;
-       res.render(`user-profile/${user._id}`);
+    const save = req.originalUrl
+    let count = 0;
+    let userId = ""
+    for(i=0; i< save.length; i++){
+        if (save[i] == "/"){
+            count+=1
+        } else if (count == 2 && save[i] != "/" && save[i] != "?"){
+            userId += save[i]
+        }
+    }
+    console.log(userId)
+    User.findById(userId)
+      .then(user => {
+       res.render('user-profile', {user: user, currentUser});
 });
+});
+
 };
 
 // STRECTH CHALLENGE!!!
