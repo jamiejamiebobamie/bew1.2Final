@@ -109,13 +109,19 @@ module.exports = function(app) {
       console.log("this is the starterId " + starterId)
       console.log("this is the threadId " + threadId)
   var currentUser = req.user;
+  if (req.body.title == "" || req.body.content == ""){
+      Starter.findById(starterId).then(starter => {
+      res.render('errorEditStarter', {currentUser, starter}); //NEED TO MAKE AN ERROR PAGE FOR BOTH STARTERS AND THREADS FOR CORRECT REDIRECT
+  });
+  } else {
     Thread.findByIdAndUpdate(threadId, req.body).then(thread => {
         res.redirect(`/starters/${starterId}`);
       })
       .catch(err => {
         console.log(err.message)
       })
-  });
+  };
+});
         //
         // // UPDATE... does this replace EDIT? ...guess not...
         // app.put('/starters/starters/:starterId/threads/:threadId', (req, res) => {

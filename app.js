@@ -12,6 +12,8 @@ const exphbs = require('express-handlebars');
 
 const mongoose = require('mongoose');
 
+var uniqueValidator = require('mongoose-unique-validator');
+
 // Set db
 const db = require('./data/final-db');
 
@@ -51,7 +53,7 @@ const starters = require('./controllers/starters')(app);
 const Thread = require('./models/thread');
 const threads = require('./controllers/threads.js')(app);
 const User = require('./models/user.js');
-const auth = require('./controllers/auth.js')(app);``
+const auth = require('./controllers/auth.js')(app);
 const port = process.env.PORT || 9000;
 
 app.use(express.static('public'));

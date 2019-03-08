@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
+const uniqueValidator = require('mongoose-unique-validator');
+
+// var mySchema = mongoose.Schema(/* put your schema definition here */);
 
 const UserSchema = new Schema({
   createdAt: { type: Date },
   updatedAt: { type: Date },
   password: { type: String, select: false },
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   starters : [{ type: Schema.Types.ObjectId, ref: "Starter" }],
   threads : [{ type: Schema.Types.ObjectId, ref: "Thread" }]
 });
@@ -39,5 +42,7 @@ UserSchema.methods.comparePassword = function(password, done) {
     done(err, isMatch);
   });
 };
+
+UserSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("User", UserSchema);
