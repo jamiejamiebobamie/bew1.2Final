@@ -8,7 +8,7 @@ const Thread = require('../models/thread');
 module.exports = function(app) {
 
         // CREATE thread
-        app.post("/starters/:starterId/threads", function (req, res) {
+        app.post("/starters/:starterSlug/threads", function (req, res) {
             var currentUser = req.user;
             const thread = new Thread(req.body);
             thread.author = req.user._id;

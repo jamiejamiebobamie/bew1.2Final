@@ -1,5 +1,5 @@
 {
-  "name": "AGoodYarn",
+  "name": "agoodyarn",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -8,14 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamiejamiebobamie/bew1.2Final"
+    "url": "git+https://github.com/jamiejamiebobamie/bew1.2Final.git"
   },
   "author": "Jamie McCrory",
   "license": "ISC",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
+  "homepage": "https://github.com/jamiejamiebobamie/bew1.2Final#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -42,5 +39,8 @@
   "directories": {
     "test": "test"
   },
-  "description": ""
+  "description": "This is the final project for my backend web class (BEW1.2) at Make School, San Francisco.",
+  "bugs": {
+    "url": "https://github.com/jamiejamiebobamie/bew1.2Final/issues"
+  }
 }

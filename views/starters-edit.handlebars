@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <form method="POST" action="/starters/{{starter._id}}?_method=PUT">
+    <form method="POST" action="/starters/{{starter.slug}}?_method=PUT">
         <fieldset>
     <h1>Edit</h1>
     <legend>Please, start again, from the beginning...</legend>
@@ -24,7 +24,7 @@
 
     <div class='edit'>
          <span style="float:left">
-         <p><form method="" action="/starters/{{starter._id}}">
+         <p><form method="" action="/starters/{{starter.slug}}">
              <button class="btn btn-primary" type="submit">Back</button>
          </form></p></span>
      <span style="float:right">
@@ -32,6 +32,6 @@
          <button class="btn btn-primary" type="submit">Delete ENTIRE Story Thread</button>
      </form></p></span>
    </div>
-   
+
   </div>
 </div>

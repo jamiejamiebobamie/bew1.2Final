@@ -38,8 +38,8 @@ module.exports = (app) => {
                 starter.index = req.body.title[0].toUpperCase();
                 var slug = slugify(`${req.body.title}`)
                 starter.slug = slug;//`${this.title}`); // some-string
-                starter.url = `/starters/${starter._id}`;
-                // starter.url = `/starters/${slug}`;
+                // starter.url = `/starters/${starter._id}`;
+                starter.url = `/starters/${slug}`;
                 // console.log(`hey /starters/${slug}`)
                 starter
                     .save()
@@ -65,7 +65,8 @@ module.exports = (app) => {
         // SHOW
         app.get("/starters/:slug", function (req, res) {
             var currentUser = req.user;
-            Starter.findById(req.params.id).populate('threads').lean()
+            Starter.findOne({slug: req.params.slug}).populate('threads').lean()
+            // Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
                     console.log("Author " + starter.author);
                     res.render("starters-show", { starter, currentUser });
@@ -76,7 +77,7 @@ module.exports = (app) => {
         });
 
         //SHOW FORMATTED STORY
-        app.get("/starters/:id/yarn", function (req, res) {
+        app.get("/starters/:slug/yarn", function (req, res) {
             let authors = "by "
             let authorsArray = [] // implement tomorrow
             let story = ""
@@ -110,28 +111,37 @@ module.exports = (app) => {
 
 
         // EDIT a compliment by clicking on the edit link in the shown compliment
-        app.get('/starters/:title/edit', (req, res) => {
+        app.get('/starters/:slug/edit', (req, res) => {
             console.log("edit form")
             var currentUser = req.user;
-          Starter.findById(req.params.id, function(err, starter) {
-            res.render('starters-edit', {starter, currentUser });
-          })
-      });
+            Starter.findOne( {slug: req.params.slug})
+            .then(starter => {
+                console.log(starter.slug)
+          // Starter.findById(req.params.id, function(err, starter) {
+            res.render('starters-edit', { starter, currentUser });
+        })
+        });
+      // });
 
 
-        // UPDATE... does this replace EDIT? ...guess not...
-        app.put('/starters/:id', (req, res) => {
+        // UPDATE
+        app.put('/starters/:slug', (req, res) => {
+            console.log("googly "+ req.params.slug)
         var currentUser = req.user;
-        if (req.body.title == "" || req.body.content == ""){
+        if (req.body.content == ""){
             Starter.findById(req.params.id).then(starter => {
             res.render('errorEditStarter', {currentUser, starter}); //NEED TO MAKE AN ERROR PAGE FOR BOTH STARTERS AND THREADS FOR CORRECT REDIRECT
         });
         } else {
-          Starter.findByIdAndUpdate(req.params.id, req.body).then(starter => {
+            Starter.findOne( {slug: req.params.slug})
+            .then(starter => {
+                console.log("POOOgly "+ starter.slug)
+                starter.content = req.body.content
+          // Starter.findByIdAndUpdate(req.params.id, req.body).then(starter => {
               starter.authorName = req.user.username
               starter.author = req.user._id;
               starter.save()
-              res.redirect(`/starters/${starter._id}`);
+              res.redirect(`/starters/${starter.slug}`);
             })
             .catch(err => {
               console.log(err.message)
@@ -141,7 +151,7 @@ module.exports = (app) => {
 
 
         // DELETE one compliment from the delete button on the "shown" compliment page
-        app.delete('/starters/:title', function (req, res) {
+        app.delete('/starters/:slug', function (req, res) {
           var currentUser = req.user;
           console.log("starter id: "+req.params.id)
           Starter.findByIdAndRemove(req.params.id).then(starter => {
