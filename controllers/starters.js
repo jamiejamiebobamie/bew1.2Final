@@ -2,6 +2,7 @@
 
 const Starter = require('../models/starter');
 const User = require('../models/user');
+const slugify = require('slugify');
 
 module.exports = (app) => {
 
@@ -35,7 +36,11 @@ module.exports = (app) => {
                 starter.authorName = req.user.username
                 starter.author = req.user._id;
                 starter.index = req.body.title[0].toUpperCase();
+                var slug = slugify(`${req.body.title}`)
+                starter.slug = slug;//`${this.title}`); // some-string
                 starter.url = `/starters/${starter._id}`;
+                // starter.url = `/starters/${slug}`;
+                // console.log(`hey /starters/${slug}`)
                 starter
                     .save()
                     .then(starter => {
@@ -58,10 +63,11 @@ module.exports = (app) => {
         });
 
         // SHOW
-        app.get("/starters/:id", function (req, res) {
+        app.get("/starters/:slug", function (req, res) {
             var currentUser = req.user;
             Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
+                    console.log("Author " + starter.author);
                     res.render("starters-show", { starter, currentUser });
                 })
                 .catch(err => {
@@ -104,7 +110,7 @@ module.exports = (app) => {
 
 
         // EDIT a compliment by clicking on the edit link in the shown compliment
-        app.get('/starters/:id/edit', (req, res) => {
+        app.get('/starters/:title/edit', (req, res) => {
             console.log("edit form")
             var currentUser = req.user;
           Starter.findById(req.params.id, function(err, starter) {
@@ -135,7 +141,7 @@ module.exports = (app) => {
 
 
         // DELETE one compliment from the delete button on the "shown" compliment page
-        app.delete('/starters/:id', function (req, res) {
+        app.delete('/starters/:title', function (req, res) {
           var currentUser = req.user;
           console.log("starter id: "+req.params.id)
           Starter.findByIdAndRemove(req.params.id).then(starter => {

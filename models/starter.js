@@ -5,6 +5,8 @@ const Populate = require("../utils/autopopulate");
 
 var uniqueValidator = require('mongoose-unique-validator');
 
+var slugify = require('slugify');
+
 const StarterSchema = new Schema({
 
   title: { type: String, required: false, unique: true },
@@ -13,12 +15,15 @@ const StarterSchema = new Schema({
   author : { type: Schema.Types.ObjectId, ref: "User", required: false },
   authorName: { type: String, required: false },
 
+  slug: {type: String, required:false, unique: true},
+
   url: { type: String, required: false },
   index: {type: String, required: false}
 });
 
 // StarterSchema.plugin(uniqueValidator);
 StarterSchema.plugin(uniqueValidator, { message: 'Error, the title must be unique. Someone else already has a story with that title.' });
+
 
 // Always populate the author field
 StarterSchema

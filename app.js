@@ -21,6 +21,8 @@ const db = require('./data/final-db');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 
+const slugify = require('slugify');
+
 //middleware for putting something when you post it
 const methodOverride = require('method-override');
 
