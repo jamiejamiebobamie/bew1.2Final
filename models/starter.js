@@ -13,12 +13,8 @@ const StarterSchema = new Schema({
   author : { type: Schema.Types.ObjectId, ref: "User", required: false },
   authorName: { type: String, required: false },
 
-  name: { type: String, required: false },
   url: { type: String, required: false },
-  age: {type: String, required: false},
-  origin: { type: String, required: false },
-  occupation: {type: String, required: false },
-  picture: {type: String, required: false} //To be implemented later... 'TBIL'
+  index: {type: String, required: false}
 });
 
 // StarterSchema.plugin(uniqueValidator);

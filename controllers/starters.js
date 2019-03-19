@@ -34,6 +34,7 @@ module.exports = (app) => {
                 var starter = new Starter(req.body);
                 starter.authorName = req.user.username
                 starter.author = req.user._id;
+                starter.index = req.body.title[0].toUpperCase();
                 starter.url = `/starters/${starter._id}`;
                 starter
                     .save()
