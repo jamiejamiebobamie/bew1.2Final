@@ -15,7 +15,8 @@ module.exports = (app) => {
             Starter.find().populate('author')
             .then(starters => {
                 console.log(starters)
-                res.render('starters-index', { starters, currentUser });
+                res.render('index-landing', { starters, currentUser });
+                // res.render('starters-index', { starters, currentUser });
             }).catch(err => {
                 console.log(err.message);
             })
