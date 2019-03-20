@@ -1,5 +1,11 @@
 body{
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
+    background-image: url("/imgs/background_copy.jpg");
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .site_name_container{
