@@ -8,7 +8,7 @@ Yarn
     <div>
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
-            <!-- <a href="/starters/new" class="btn btn-primary navbar-btn">Begin a new story</a> -->
+            <li><a href="/user-profile/{{currentUser.username}}">{{currentUser.username}}</a></li>
             <li><a href="/logout">Logout</a></li>
           {{else}}
             <li><a href="/login">Login</a></li>
