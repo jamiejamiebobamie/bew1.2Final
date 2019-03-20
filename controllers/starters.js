@@ -73,11 +73,13 @@ module.exports = (app) => {
         // SHOW
         app.get("/starters/:slug", function (req, res) {
             var currentUser = req.user;
+            let authorStart;
             Starter.findOne({slug: req.params.slug}).populate('threads').lean()
             // Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
-                    console.log("Author " + starter.author);
-                    res.render("starters-show", { starter, currentUser });
+                    authorStart = req.user.username == starter.author.username;
+                    // console.log("Bool "+ authorStart + "req.user " + req.user.username  + "starter author " + starter.author.username)
+                    res.render("starters-show", { starter, currentUser, authorStart });
                 })
                 .catch(err => {
                     console.log(err.message);

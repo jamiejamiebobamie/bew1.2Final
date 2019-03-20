@@ -2,7 +2,11 @@
 
 <div class="col-xs-12 comment-indent">
   <div class="titleContainer"><h1>{{starter.title}}</h1></div>
+  {{#if authorStart}}
     <a href="{{starter.slug}}/edit" class="lead"><p>{{starter.content}}</p></a>
+    {{else}}
+    <p>{{starter.content}}</p>
+    {{/if}}
   </div>
 
     <p class="text-right">
