@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 
+var slugify = require('slugify');
+
 
 
 module.exports = app => {
@@ -79,7 +81,7 @@ app.get('/logout', (req, res) => {
 //
 
 // /user-profile route
-app.get('/user-profile/:id', (req,res) => {
+app.get('/user-profile/:username', (req,res) => {
     var currentUser = req.user;
     const save = req.originalUrl
     let count = 0;
@@ -91,7 +93,8 @@ app.get('/user-profile/:id', (req,res) => {
             userId += save[i]
         }
     }
-    User.findById(userId)
+    User.findOne({username: userId})
+    // User.findById(userId)
       .then(user => {
        res.render('user-profile', {user: user, currentUser, date: user.createdAt.toDateString()});
 });

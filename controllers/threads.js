@@ -12,15 +12,18 @@ module.exports = function(app) {
             var currentUser = req.user;
             const thread = new Thread(req.body);
             thread.author = req.user._id;
-            thread.authorName = req.user.username
+            thread.authorName = req.user.username;
+            thread.slug = req.params.starterSlug;
             thread
                 .save()
                 .then(thread => {
                     return Promise.all([
-                        Starter.findById(req.params.starterId)
+                        Starter.findOne({slug: req.params.starterSlug})
+                        // Starter.findById(req.params.starterId)
                     ]);
                 })
                 .then(([starter, user]) => {
+                    console.log("heya!!!" + starter.threads)
                     thread.starter = starter
                     thread.save()
                     starter.threads.push(thread);
@@ -29,7 +32,7 @@ module.exports = function(app) {
                     ]);
                 })
                 .then(starter => {
-                    res.redirect(`/starters/${req.params.starterId}`);
+                    res.redirect(`/starters/${req.params.starterSlug}`);
                 })
                 .catch(err => {
                     console.log(err);
@@ -37,7 +40,7 @@ module.exports = function(app) {
         });
 
         // EDIT a compliment by clicking on the edit link in the shown compliment
-        app.get('/starters/:starterId/threads/:threadId/edit', (req, res) => {
+        app.get('/starters/:starterSlug/threads/:threadId/edit', (req, res) => {
             const save = req.originalUrl
             let count = 0;
             let starterId = "";
@@ -53,15 +56,19 @@ module.exports = function(app) {
                 }
             }
             var currentUser = req.user;
-          Thread.findById(threadId, function(err, thread) {
-            res.render('threads-edit', {thread, currentUser});
+            Starter.findOne({slug: req.params.starterSlug})
+            .then(starter => {
+                console.log('LOLOL' + starter.slug)
+          Thread.findById(req.params.threadId, function(err, thread) {
+            res.render('threads-edit', {starter, thread, currentUser});
           })
+      })
       });
 
 
 
   // UPDATE... does this replace EDIT? ...guess not...
-  app.put('/starters/:starterId/threads/:threadId', (req, res) => {
+  app.put('/starters/:starterSlug/threads/:threadId', (req, res) => {
       const save = req.originalUrl
       let count = 0;
       let starterId = "";
@@ -87,7 +94,7 @@ module.exports = function(app) {
         thread.author = req.user._id;
         thread.save()
         console.log(thread.author, thread.authorName)
-        res.redirect(`/starters/${starterId}`);
+        res.redirect(`/starters/${thread.slug}`);
       })
       .catch(err => {
         console.log(err.message)
@@ -96,7 +103,8 @@ module.exports = function(app) {
 });
 
         // DELETE one compliment from the delete button on the "shown" compliment page
-        app.delete('/starters/:starterId/threads/:threadId', function (req, res) {
+        app.delete('/starters/:starterSlug/threads/:threadId', function (req, res) {
+            console.log(req.params.starterSlug)
           var currentUser = req.user;
           const save = req.originalUrl
           let count = 0;
@@ -113,7 +121,7 @@ module.exports = function(app) {
               }
           }
           Thread.findByIdAndRemove(threadId).then(thread => {
-             res.redirect(`/starters/${starterId}`);
+             res.redirect(`/starters/${thread.slug}`);
           }).catch((err) => {
             console.log(err.message);
           })

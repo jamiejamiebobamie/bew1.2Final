@@ -4,7 +4,8 @@ body{
 
 .site_name_container{
     display: flex;
-    justify-content: right;
+    align-content: center;
+    justify-content: center;
 }
 
 .site_name{

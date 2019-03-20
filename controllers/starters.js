@@ -3,6 +3,8 @@
 const Starter = require('../models/starter');
 const User = require('../models/user');
 const slugify = require('slugify');
+const Thread = require('../models/thread');
+
 
 module.exports = (app) => {
 
@@ -36,6 +38,9 @@ module.exports = (app) => {
                 starter.authorName = req.user.username
                 starter.author = req.user._id;
                 starter.index = req.body.title[0].toUpperCase();
+                // let fillerThread = new Thread(" ");
+                // fillerThread.save()
+                // starter.threads.push(fillerThread)
                 var slug = slugify(`${req.body.title}`)
                 starter.slug = slug;//`${this.title}`); // some-string
                 // starter.url = `/starters/${starter._id}`;
@@ -154,7 +159,8 @@ module.exports = (app) => {
         app.delete('/starters/:slug', function (req, res) {
           var currentUser = req.user;
           console.log("starter id: "+req.params.id)
-          Starter.findByIdAndRemove(req.params.id).then(starter => {
+          Starter.findOneAndRemove({slug: req.params.slug}).then(starter => {
+          // Starter.findByIdAndRemove(req.params.id).then(starter => {
              res.redirect('/');
           }).catch((err) => {
             console.log(err.message);

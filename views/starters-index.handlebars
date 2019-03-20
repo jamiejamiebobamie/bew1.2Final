@@ -1,5 +1,5 @@
 <div class='site_name_container'>
-    <h1 class="site_name">A Good Yarn</h1>
+    <h1 class="site_name">Yarn</h1>
 </div>
 {{#if currentUser}}
 <div class="row">
@@ -14,8 +14,7 @@
              </div>
                   <div><small>{{this.content}}</small></div>
                 <div class="right">
-                  <a href="user-profile/{{this.author._id}}">{{this.author.username}}</a>
-
+                  <a href="user-profile/{{this.author.username}}">{{this.author.username}}</a>
             </li>
             {{/each}}
         </ul>

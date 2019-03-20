@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
 
-    <form method="POST" action="/starters/{{thread.starter._id}}/threads/{{thread._id}}?_method=PUT">
+    <form method="POST" action="/starters/{{thread.slug}}/threads/{{thread._id}}?_method=PUT">
         <fieldset>
     <h1>Edit</h1>
     <legend>Because we all make mistakes...</legend>
@@ -21,11 +21,11 @@
 
    <div class='edit'>
         <span style="float:left">
-        <p><form method="" action="/starters/{{thread.starter._id}}">
+        <p><form method="" action="/starters/{{thread.slug}}">
             <button class="btn btn-primary" type="submit">Back</button>
         </form></p></span>
     <span style="float:right">
-    <p><form method="POST" action="/starters/{{thread.starter._id}}/threads/{{thread._id}}?_method=DELETE">
+    <p><form method="POST" action="/starters/{{thread.slug}}/threads/{{thread._id}}?_method=DELETE">
         <button class="btn btn-primary" type="submit">Delete Thread</button>
     </form></p></span>
   </div>

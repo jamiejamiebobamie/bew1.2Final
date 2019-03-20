@@ -1,12 +1,13 @@
 <div class="row">
+
 <div class="col-xs-12 comment-indent">
   <div class="titleContainer"><h1>{{starter.title}}</h1></div>
     <a href="{{starter.slug}}/edit" class="lead"><p>{{starter.content}}</p></a>
   </div>
-  <div class="col-xs-12 comment-indent">
-     <p class="text-right">{{starter.author.username}}</p>
-  </div>
 
+    <p class="text-right">
+     <a href="/user-profile/{{starter.author.username}}">{{starter.author.username}}</a></p>
+    </div>
 
   {{#each starter.threads}}
     {{> thread thread=this starterId=../starter._id}}
