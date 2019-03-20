@@ -18,7 +18,8 @@ const StarterSchema = new Schema({
   slug: {type: String, required:false, unique: true},
 
   url: { type: String, required: false },
-  index: {type: String, required: false}
+  index: {type: String, required: false},
+  finished: {type: Boolean, required: false}
 });
 
 // StarterSchema.plugin(uniqueValidator);

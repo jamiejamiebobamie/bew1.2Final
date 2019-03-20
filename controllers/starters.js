@@ -38,6 +38,8 @@ module.exports = (app) => {
                 starter.authorName = req.user.username
                 starter.author = req.user._id;
                 starter.index = req.body.title[0].toUpperCase();
+                starter.finished = false;
+
                 // let fillerThread = new Thread(" ");
                 // fillerThread.save()
                 // starter.threads.push(fillerThread)
@@ -54,6 +56,7 @@ module.exports = (app) => {
                     .then(user => {
                         user.starters.unshift(starter);
                         user.save();
+                        console.log("FINISHED " + starter.finished)
                         // REDIRECT TO THE NEW Starter
                         res.redirect(`${starter.url}`);
                     })
