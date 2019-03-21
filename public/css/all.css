@@ -29,9 +29,9 @@ button {
 
     color: #ecfda9;
     /* background-color: Transparent; */
-    /* background-color: #ecfda9; */
+    background-color: #9a7dc6;
     border-color: #ecfda9;
-    border-radius: 5vw;
+    border-radius: 25px;
 }
 
 button:hover {
@@ -84,7 +84,7 @@ h2{
     display: flex;
     align-content: center;
     justify-content: center;
-    flex-shrink: center;
+    /* flex-shrink: center; */
     background-image: linear-gradient(#124B80, #2264A2);
     /* background-color: #9a7dc6; */
 }
