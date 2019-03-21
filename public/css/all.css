@@ -1,8 +1,11 @@
 body{
-    /* background-color: #9a7dc6; */
-    background-image: linear-gradient(#9a7dc6, #ffffff);
+
+    /* background-image: linear-gradient(#9a7dc6, #ffffff); */
+
     /* background-image: linear-gradient(#124B80, #2264A2); */
     /* background-image: url("/imgs/background_copy.jpg"); */
+    /* background-color: yellow */
+    background-color: #9a7dc6;
 }
 
 img {
@@ -22,16 +25,17 @@ button {
     min-width: 10vw;
     min-height: 5vw;
     margin: 2vw;
-margin-right: 9vw;
+    margin-right: 9vw;
 
-  color: #ecfda9;
-  background-color: Transparent;
-  border-color: #ecfda9;
+    color: #ecfda9;
+    /* background-color: Transparent; */
+    /* background-color: #ecfda9; */
+    border-color: #ecfda9;
+    border-radius: 5vw;
 }
 
 button:hover {
   background: #ecfda9;
-  /* color: white; */
 }
 
 .site_name_container{
@@ -76,9 +80,26 @@ h2{
     margin: 3vw;
 }
 
+.synopsis{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-shrink: center;
+    background-image: linear-gradient(#124B80, #2264A2);
+    /* background-color: #9a7dc6; */
+}
+
 h3{
-    margin: 3vw;
-    text-indent: 3vw;
+    font-style: normal;
+    font-family: Avantgarde;
+    color: #ffffff;
+    margin: 5vw;
+    margin-right: 5vw;
+    justify-content: center;
+    font-size: 35px;
+    text-align: center;
+
+    /* text-indent: 3vw; */
 }
 
 .lead{
@@ -109,7 +130,9 @@ transform: scale(.2);
     align-content: center;
     justify-content: center;
     background-image: linear-gradient(#124B80, #2264A2);
-    /* background-color: #124B80; */
+    /* border-color: #ecfda9; */
+    margin: -2vw;
+    border-color: Transparent;
 }
 
 .navbar_buttons{
@@ -118,6 +141,25 @@ transform: scale(.2);
     justify-content: center;
 }
 
+.nav_background{
+    /* margin:5vw; */
+    background-color: #124B80;
+}
+
 .row{
-    background-color: Transparent;
+    /* background-color: blue; */
+    /* background-image: linear-gradient(#9a7dc6, #ffffff); */
+    /* border-radius: 1000px; */
+    margin: 5vw;
+}
+
+.container{
+    /* display: flex; */
+    /* align-content: center; */
+    /* justify-content: center; */
+
+    /* background-image: linear-gradient(#9a7dc6, #ffffff); */
+    /* background-color: yellow; */
+    /* margin: 5vw; */
+/* background-image: linear-gradient(#9a7dc6, #ffffff); */
 }
