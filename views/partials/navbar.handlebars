@@ -15,7 +15,8 @@
         <div class="navbar-header">
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
-            <li><a href="/user-profile/{{currentUser.username}}">{{currentUser.username}}</a></li>
+          <li><a href="/user-profile/{{currentUser.username}}"><button type="login_button" class="btn btn-lg">My Profile</button></a></li>
+            <!-- <li><a href="/user-profile/{{currentUser.username}}">{{currentUser.username}}</a></li> -->
             <li><a href="/logout"><button type="login_button" class="btn btn-lg">Logout</button></a></li>
             <!-- <li><a href="/logout">Logout</a></li> -->
           {{else}}
@@ -27,12 +28,13 @@
         </ul>
 
     {{#if currentUser}}
-    <ul class="nav navbar-nav navbar-right">
-     <li><a href="/starters/new"><button type="login_button" class="btn btn-lg">Begin a new story</button></a></li>
-      <!-- <a href="/starters/new" class="btn btn-primary navbar-btn">Begin a new story</a> -->
 
+    <div class="new_story_container">
+    <ul class="nav navbar-nav navbar-right">
+         <li><a href="/starters/new"><button type="login_button" class="btn btn-lg btn-block">Begin a new story</button></a></li>
+     </ul>
+    </div>
     {{/if}}
-    </ul>
     </div>
   </div>
 </nav>
