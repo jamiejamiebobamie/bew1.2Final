@@ -125,6 +125,14 @@ p:not(.text-right):hover{
 transform: scale(.2);
 }
 
+.new_story_container{
+    /* display: flex;
+    align-content: center;
+    justify-content: center; */
+    margin-right: 17vw;
+
+}
+
 .navbar{
     display: flex;
     align-content: center;

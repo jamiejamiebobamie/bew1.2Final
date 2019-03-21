@@ -35,8 +35,8 @@ function draw(){
     tint(255, 127)
     push();
     translate(200,275)
-    rot = PI * (mouseX-mouseY)/1200
-    rot2 = PI * (mouseX-mouseY)/3000)
+    rot = PI * (mouseX-mouseY)/1200;
+    rot2 = PI * (mouseX-mouseY)/3000
     rotate(rot2);
     image(spinner,0,0);
     pop();
@@ -49,4 +49,4 @@ function draw(){
     imageMode(CENTER);
 }
 
-draw()
+interv = setInterval(draw,1000)
