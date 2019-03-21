@@ -85,7 +85,7 @@ h2{
     align-content: center;
     justify-content: center;
     /* flex-shrink: center; */
-    background-image: linear-gradient(#124B80, #2264A2);
+    /* background-image: linear-gradient(#124B80, #2264A2); */
     /* background-color: #9a7dc6; */
 }
 
@@ -129,7 +129,8 @@ transform: scale(.2);
     display: flex;
     align-content: center;
     justify-content: center;
-    background-image: linear-gradient(#124B80, #2264A2);
+    /* background-image: linear-gradient(#124B80, #2264A2); */
+    background-color: #225E97;
     /* border-color: #ecfda9; */
     margin: -2vw;
     border-color: Transparent;

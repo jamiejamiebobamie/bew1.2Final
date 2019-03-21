@@ -36,7 +36,8 @@ function draw(){
     push();
     translate(200,275)
     rot = PI * (mouseX-mouseY)/1200
-    rotate(rot);
+    rot2 = PI * (mouseX-mouseY)/3000)
+    rotate(rot2);
     image(spinner,0,0);
     pop();
     tint(255, 255)
