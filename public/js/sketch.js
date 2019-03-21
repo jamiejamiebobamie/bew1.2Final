@@ -8,6 +8,9 @@ let logo_background;
 
 let rot;
 
+let mouse_x = 0;
+let mouse_y = 0;
+
 function preload() {
 
 }
@@ -28,7 +31,7 @@ function setup () {
 
 }
 
-
+function drawz(){
 function draw(){
     background(34,94,151)
     image(logo_background, 275, 275)
@@ -36,7 +39,7 @@ function draw(){
     push();
     translate(200,275)
     rot = PI * (mouseX-mouseY)/1200;
-    rot2 = PI * (mouseX-mouseY)/3000
+    rot2 = Math.abs(PI * (mouseX-mouseY)/3000);
     rotate(rot2);
     image(spinner,0,0);
     pop();
@@ -48,5 +51,13 @@ function draw(){
 
     imageMode(CENTER);
 }
+draw()
+}
 
-interv = setInterval(draw,1000)
+// if (mouseX != mouse_x || mouseY != mouse_y){
+//     console.log('hey')
+//     drawz()
+//     mouse_x = mouseX
+//     mouse_y = mouseY
+// }
+interv = setInterval(drawz,50)
