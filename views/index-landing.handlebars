@@ -1,7 +1,8 @@
 <div class='site_name_container'>
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-        <h3 id="inProgress">Stories in Progress</h3>
+        <h3 id="inProgress">Stories In Progress</h3>
+        {{> index}}
         <ul>
             {{#each startersFalse}}
             <li class="list-group-item">
@@ -11,25 +12,28 @@
                   <div><small>{{this.content}}</small></div>
                 <div class="right">
                   <a href="user-profile/{{this.authorName}}">{{this.authorName}}</a>
+                </div>
             </li>
             {{/each}}
         </ul>
-    </div>
 
-        <h3 id="finished">Finished Stories</h3>
+
+    <h3 id="finished">Finished Stories</h3>
+            {{> index}}
         <ul>
             {{#each startersTrue}}
             <li class="list-group-item">
                 <div class="lead">
-             <a href="{{this.url}}">{{this.title}}</a>
+             <a href="{{this.url}}/yarn">{{this.title}}</a>
              </div>
                   <div><small>{{this.content}}</small></div>
                 <div class="right">
                   <a href="user-profile/{{this.authorName}}">{{this.authorName}}</a>
+                      </div>
             </li>
             {{/each}}
         </ul>
-    </div>
+
 </div>
 </div>
 </div>

@@ -18,7 +18,7 @@ module.exports = (app) => {
                     .then(startersFalse => {
                 Starter.find({"finished": true}).populate('author')
                     .then(startersTrue => {
-                    res.render('index-landing', {startersTrue, startersFalse, currentUser, landing });
+                    res.render('index-landing', {startersTrue: startersTrue, startersFalse: startersFalse, currentUser, landing });
                 }).catch(err => {
                     console.log(err.message);
                 })
@@ -80,12 +80,34 @@ module.exports = (app) => {
         app.get("/starters/:slug", function (req, res) {
             var currentUser = req.user;
             let authorStart;
+            let authors = "by "
+            let authorsArray = [] // implement tomorrow
+            let story = ""
+            let count = 0
             Starter.findOne({slug: req.params.slug}).populate('threads').lean()
             // Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
                     authorStart = req.user.username == starter.author.username;
                     // console.log("Bool "+ authorStart + "req.user " + req.user.username  + "starter author " + starter.author.username)
+                    if (starter.finished == false){
                     res.render("starters-show", { starter, currentUser, authorStart });
+                } else {
+                    story+=starter.content + " "
+                    authors+= starter.authorName + " "
+                    count+=1
+                    starter.threads.forEach(function(thread){
+//the logic and implementation of this is flawed. Supposed to create new paragraphs after 5 sentences...
+                        if (count < 5){
+                            story += thread.content + " "
+                            count += 1
+                        } else {
+                            story += thread.content + "\n\n"
+                            count = 0
+                        }
+                        authors+= "and " + thread.authorName + " "
+                    })
+                    res.render("starters-show-story", { currentUser, starter, story, authors });
+                }
                 })
                 .catch(err => {
                     console.log(err.message);
