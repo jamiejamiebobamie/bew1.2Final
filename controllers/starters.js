@@ -10,17 +10,21 @@ module.exports = (app) => {
 
     // INDEX
         app.get('/', (req, res) => {
+            let startersFalse;
+            let startersTrue;
             var currentUser = req.user;
-            console.log(req.cookies);
-            Starter.find().populate('author')
-            .then(starters => {
-                console.log(starters)
-                res.render('index-landing', { starters, currentUser });
-                // res.render('starters-index', { starters, currentUser });
-            }).catch(err => {
-                console.log(err.message);
+            Starter.find({"finished": false}).populate('author')
+                    .then(startersFalse => {
+                Starter.find({"finished": true}).populate('author')
+                    .then(startersTrue => {
+                    res.render('index-landing', { startersTrue, startersFalse, currentUser });
+                }).catch(err => {
+                    console.log(err.message);
+                })
             })
         })
+
+
 
     // GET NEW POST FORM
     app.get('/starters/new', (req, res) => {
@@ -94,7 +98,7 @@ module.exports = (app) => {
             let story = ""
             let count = 0
             var currentUser = req.user;
-            Starter.findById(req.params.id).populate('threads').lean()
+            Starter.findOne({"slug": req.params.slug}).populate('threads').lean()
                 .then(starter => {
                     story+=starter.content + " "
                     authors+= starter.authorName + " "
@@ -159,6 +163,23 @@ module.exports = (app) => {
             })
         };
     });
+
+    // Finished
+    app.put('/starters/:slug/finished', (req, res) => {
+        // console.log("googly "+ req.params.slug)
+    var currentUser = req.user;
+        Starter.findOne( {slug: req.params.slug})
+        .then(starter => {
+            starter.finished = true
+      // Starter.findByIdAndUpdate(req.params.id, req.body).then(starter => {
+          starter.save()
+          res.redirect(`/starters/${starter.slug}/yarn`);
+          // res.redirect(`/starters/${starter.slug}`);
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
+});
 
 
         // DELETE one compliment from the delete button on the "shown" compliment page

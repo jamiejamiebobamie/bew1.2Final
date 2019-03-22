@@ -33,5 +33,15 @@
      </form></p></span>
    </div>
 
-  </div>
+
+<div class='edit'>
+ <span style="float:center">
+     <p>Are you finished writing the story?</p>
+     <p>Once you mark the story as finished it cannot be added to by you or your friends and will be moved to the finsihed section.</p>
+ <p><form method="POST" action="/starters/{{starter.slug}}/finished?_method=PUT">
+     <button class="btn btn-primary" type="submit">Finished</button>
+ </form></p></span>
+        </div>
+
+    </div>
 </div>

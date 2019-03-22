@@ -1,7 +1,10 @@
 const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 
-var slugify = require('slugify');
+const Starter = require('../models/starter');
+const slugify = require('slugify');
+const Thread = require('../models/thread');
+
 
 
 
@@ -83,9 +86,13 @@ app.get('/logout', (req, res) => {
 // /user-profile route
 app.get('/user-profile/:username', (req,res) => {
     var currentUser = req.user;
+    var user = req.params.username
     const save = req.originalUrl
     let count = 0;
     let userId = ""
+    let startersFalse;
+    let startersTrue;
+
     for(i=0; i< save.length; i++){
         if (save[i] == "/"){
             count+=1
@@ -93,11 +100,18 @@ app.get('/user-profile/:username', (req,res) => {
             userId += save[i]
         }
     }
-    User.findOne({username: userId})
-    // User.findById(userId)
+
+    User.findOne({username: req.params.username})
       .then(user => {
-       res.render('user-profile', {user: user, currentUser, date: user.createdAt.toDateString()});
-});
-});
+              Starter.find({ author: user, "finished": false}).populate('author')
+      .then(startersFalse => {
+              Starter.find({ author: user, "finished": true}).populate('author')
+      .then(startersTrue => {
+      console.log(startersFalse);
+          res.render('user-profile', {user: user, currentUser, date: user.createdAt.toDateString(), startersFalse, startersTrue});
+                    });
+                });
+            });
+        });
 
 };
