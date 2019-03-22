@@ -10,6 +10,7 @@ module.exports = (app) => {
 
     // INDEX
         app.get('/', (req, res) => {
+            let landing = true;
             let startersFalse;
             let startersTrue;
             var currentUser = req.user;
@@ -17,7 +18,7 @@ module.exports = (app) => {
                     .then(startersFalse => {
                 Starter.find({"finished": true}).populate('author')
                     .then(startersTrue => {
-                    res.render('index-landing', { startersTrue, startersFalse, currentUser });
+                    res.render('index-landing', {startersTrue, startersFalse, currentUser, landing });
                 }).catch(err => {
                     console.log(err.message);
                 })

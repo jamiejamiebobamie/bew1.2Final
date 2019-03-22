@@ -13,11 +13,12 @@ module.exports = app => {
 //Jasmine Humbert's code:
 // *******
     app.get('/sign-up', (req, res) => {
+        let landing = false;
         var currentUser = req.user;
         if (currentUser) {
             res.redirect('/');
         } else {
-            res.render('sign-up', currentUser);
+            res.render('sign-up', currentUser, landing);
         }
     });
 // *******
@@ -79,7 +80,9 @@ app.get('/logout', (req, res) => {
 
 // LOGIN FORM
  app.get('/login', (req, res) => {
-   res.render('login');
+     let landing = false;
+
+   res.render('login', { landing });
  });
 //
 

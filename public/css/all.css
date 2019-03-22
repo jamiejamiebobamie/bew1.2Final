@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-  background: #ecfda9;
+  /* background: #ecfda9; */
 }
 
 .site_name_container{
@@ -92,7 +92,7 @@ h2{
 h3{
     font-style: normal;
     font-family: Avantgarde;
-    color: #ffffff;
+    color: #ecfda9;
     margin: 5vw;
     margin-right: 5vw;
     justify-content: center;
@@ -186,6 +186,7 @@ transform: scale(.2);
     margin-right: 9vw;
     color: #ecfda9;
     background-color: #9a7dc6;
+    background-color: Transparent;
     border-color: #ecfda9;
     border-radius: 25px;
 }

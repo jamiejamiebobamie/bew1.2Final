@@ -1,15 +1,40 @@
 {{#if currentUser}}
-
 <div class="nav_background">
+  <a href="/"><img src="/imgs/yarn_logo.png" alt=""></a>
+  <ul class="nav navbar-nav navbar-right">
+
+
+    <li><a href="/user-profile/{{currentUser.username}}"><button type="login_button" class="btn btn-lg">My Profile</button></a></li>
+      <!-- <li><a href="/user-profile/{{currentUser.username}}">{{currentUser.username}}</a></li> -->
+      <li><a href="/logout"><button type="login_button" class="btn btn-lg">Logout</button></a></li>
+      <!-- <li><a href="/logout">Logout</a></li> -->
+       <!-- <li><a href="/starters/new"><button type="login_button" class="btn btn-lg btn-block">Begin a new story</button></a></li> -->
+
+  </ul>
+<div class="new_story_container">
+     <a href="/starters/new"><button type="login_button" class="btn btn-lg btn-block">Begin a new story</button></a>
+</div>
+ </ul>
+
+
+
+{{else}}
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="/"><div id="sketch-holder"></div></a>
+      <ul class="nav navbar-nav navbar-right">
+            <li><a href="/login#login"><button type="login_button" class="btn btn-lg">Login</button></a></li>
+            <li><a href="/sign-up#signup"><button type="signup_button" class="btn btn-lg">Sign up</button></a></li>
+              <!-- <li><a href="/login">Login</a></li>
+              <li><a href="/sign-up">Sign Up</a></li> -->
+          </ul>
     </div>
     </div>
     </div>
     </nav>
-
+{{#if landing}}
     <div class="nav_background">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -17,39 +42,16 @@
 <div class="synopsis">
     <h3>Yarn is a shared story platform where people write stories together.</h3>
 </div>
+<ul class="nav navbar-nav navbar-right">
+      <li><a href="/#finished"><button type="login_button" class="btn btn-lg">Check out the finished stories!</button></a></li>
+      <li><a href="/#inProgress"><button type="signup_button" class="btn btn-lg">Check out stories in progress!</button></a></li>
+        <!-- <li><a href="/login">Login</a></li>
+        <li><a href="/sign-up">Sign Up</a></li> -->
+    </ul>
 </div>
 </div>
-</div>
-</nav>
-
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        <ul class="nav navbar-nav navbar-right">
-
-          <!-- <li><a href="/user-profile/{{currentUser.username}}"><button type="login_button" class="btn btn-lg">My Profile</button></a></li> -->
-            <!-- <li><a href="/user-profile/{{currentUser.username}}">{{currentUser.username}}</a></li> -->
-            <!-- <li><a href="/logout"><button type="login_button" class="btn btn-lg">Logout</button></a></li> -->
-            <!-- <li><a href="/logout">Logout</a></li> -->
-{{else}}
-          <li><a href="/login"><button type="login_button" class="btn btn-lg">Login</button></a></li>
-          <li><a href="/sign-up"><button type="signup_button" class="btn btn-lg">Sign up</button></a></li>
-            <!-- <li><a href="/login">Login</a></li>
-            <li><a href="/sign-up">Sign Up</a></li> -->
-          {{/if}}
-        </ul>
-
-    {{#if currentUser}}
-      <a href="/"><img src="/imgs/yarn_logo.png" alt=""></a>
-    <div class="new_story_container">
-    <ul class="nav navbar-nav navbar-right">
-         <li><a href="/starters/new"><button type="login_button" class="btn btn-lg btn-block">Begin a new story</button></a></li>
-     </ul>
-    </div>
-
-
-    </div>
-  </div>
 </nav>
 </div>
 {{/if}}
+{{/if}}
+</div>
