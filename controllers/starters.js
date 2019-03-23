@@ -81,6 +81,7 @@ module.exports = (app) => {
         // SHOW
         app.get("/starters/:slug", function (req, res) {
             var currentUser = req.user;
+            console.log("currentUser " + currentUser)
             let authorStart;
             let authors = "by "
             let authorsArray = [] // implement tomorrow
@@ -89,10 +90,15 @@ module.exports = (app) => {
             Starter.findOne({slug: req.params.slug}).populate('threads').lean()
             // Starter.findById(req.params.id).populate('threads').lean()
                 .then(starter => {
-                    authorStart = req.user.username == starter.author.username;
+
                     // console.log("Bool "+ authorStart + "req.user " + req.user.username  + "starter author " + starter.author.username)
                     if (starter.finished == false){
-                    res.render("starters-show", { starter, currentUser, authorStart });
+                        if (currentUser == null){
+                            res.render("starters-show", { starter, authorStart });
+                        } else {
+                            authorStart = req.user.username == starter.author.username;
+                            res.render("starters-show", { starter, currentUser, authorStart });                        }
+                    // res.render("starters-show", { starter, currentUser, authorStart });
                 } else {
                     story+=starter.content + " "
                     authors+= starter.authorName + " "
@@ -108,7 +114,11 @@ module.exports = (app) => {
                         }
                         authors+= "and " + thread.authorName + " "
                     })
-                    res.render("starters-show-story", { currentUser, starter, story, authors });
+                    if (currentUser == null){
+                        res.render("starters-show-story", { starter, story, authors });
+                    } else {
+                        res.render("starters-show-story", { currentUser, starter, story, authors });
+                    }
                 }
                 })
                 .catch(err => {

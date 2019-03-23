@@ -19,7 +19,8 @@ function preload() {
 
 
 function setup () {
-  var canvas = createCanvas(550, 550); //400, 400
+  // var canvas = createCanvas(550, 550); //400, 400
+  var canvas = createCanvas(windowWidth, 550);
   canvas.parent('sketch-holder');
   guide = loadImage('../imgs/yarn_logo.png')
   logo_background = loadImage('../imgs/yarn_just_logo.png')
@@ -35,7 +36,12 @@ function setup () {
 
 function drawz(){
 function draw(){
-    background(34,94,151)
+    background(255)
+    // background(34,94,151)
+    push()
+    translate(windowWidth/12,0)
+
+
     image(logo_background, 275, 275)
     tint(255, 127)
     push();
@@ -50,6 +56,7 @@ function draw(){
     image(a,190-rot*.3,310+rot*3);
     image(r,250+rot*.3,310-rot*3);
     image(n,320-rot*.3,310+rot*3);
+    pop();
 
     imageMode(CENTER);
 }
