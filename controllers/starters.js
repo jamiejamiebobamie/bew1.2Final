@@ -217,4 +217,20 @@ module.exports = (app) => {
           })
       });
 
+      app.get('/index/:letter', (req, res) => {
+          // let landing = false;
+          let startersFalse;
+          let startersTrue;
+          var currentUser = req.user;
+          Starter.find({'index': req.params.letter, "finished": false}).populate('author')
+            .then(startersFalse => {
+            Starter.find({'index': req.params.letter, "finished": true}).populate('author')
+                .then(startersTrue => {
+                  res.render('index-landing', {startersTrue: startersTrue, startersFalse: startersFalse, currentUser});
+              }).catch(err => {
+                  console.log(err.message);
+              })
+          })
+      });
+
 };

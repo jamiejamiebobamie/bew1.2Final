@@ -81,7 +81,6 @@ app.get('/logout', (req, res) => {
 // LOGIN FORM
  app.get('/login', (req, res) => {
      let landing = false;
-
    res.render('login', { landing });
  });
 //
