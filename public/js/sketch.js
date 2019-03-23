@@ -42,6 +42,7 @@ function draw(){
     translate(windowWidth/12,0)
 
 
+
     image(logo_background, 275, 275)
     tint(255, 127)
     push();
