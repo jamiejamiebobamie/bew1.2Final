@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-sm-4 col-sm-offset-4">
+  <div class="col-sm-4">
     <form action="/starters/new" method="post">
       <legend id="new">New story</legend>
       <div class="form-group">
-          Your story begins here with a single line, or a paragraph. A synopsis, a premise, a haiku, anything!
-          A single word can cause an avalanche! Now go! Write and never look back!
+          <h4>Your story begins here with a single line, or a paragraph. A synopsis, a premise, a haiku, anything!
+          A single word can cause an avalanche! Now go! Write and never look back!</h4>
           <label for="starter-title"></label>
-          <input type="text" name="title" class="form-control" id="starter-title" placeholder="Your story needs a title, even a 'working' one...">
+          <input type="text" name="title" class="form-control" id="starter-title" rows="1" placeholder="Your story needs a title, even a 'working' one...">
 
         <label for="starter-content"></label>
-        <input type="text" name="content" class="form-control" id="starter-content" placeholder="Begin your tale here...">
+        <textarea class="form-control" name="content" id="starter-content" rows="10" placeholder="Begin your tale here..."></textarea>
 
       </div>
       <div class='text-right'>

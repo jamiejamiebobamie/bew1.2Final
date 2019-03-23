@@ -155,30 +155,18 @@ transform: scale(.2);
     background-color: #124B80;
 }
 
-.row{
-    /* background-color: blue; */
-    background-image: linear-gradient(#9a7dc6, #ffffff);
-    /* border-radius: 1000px; */
-    margin: 5vw;
-    /* border-color: #ecfda9; */
-    border-radius: 25px;
-}
 
-.container{
-    /* display: flex; */
-    /* align-content: center; */
-    /* justify-content: center; */
 
-    /* background-image: linear-gradient(#9a7dc6, #ffffff); */
-    /* background-color: yellow; */
-    /* margin: 5vw; */
-/* background-image: linear-gradient(#9a7dc6, #ffffff); */
-}
+
 
 .btn{
+    /* min-width: 10vw;
+    min-height: 5vw; */
     /* margin-top: 5vw; */
     min-width: 15vw;
     min-height: 7vw;
+    /* min-width: 30vw;
+    min-height: 10vw; */
     margin: 2vw;
     /* margin-right: 9vw; */
     color: #ecfda9;
@@ -193,8 +181,8 @@ transform: scale(.2);
 }
 
 button {
-    min-width: 10vw;
-    min-height: 5vw;
+    /* min-width: 15vw;
+    min-height: 5vw; */
     margin: 2vw;
     margin-right: 9vw;
 
@@ -219,4 +207,68 @@ button:hover {
 .list-group-item{
 
     margin: 1vw;
+}
+
+.user_stories{
+    margin: 5vw;
+}
+
+.navbar-nav{
+    /* display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column; */
+    align-self: center;
+}
+
+.form-group{
+    background-color: yellow;
+    /* width: 15vw; */
+    font-size: 25px;
+}
+
+.col-sm-4{
+    background-color: blue;
+    /* min-width: 500px; */
+    /* width: 50vw; */
+    min-width: 70vw;
+
+}
+
+.row{
+    width: 80vw;
+    background-color: green;
+    /* background-image: linear-gradient(#9a7dc6, #ffffff); */
+    /* border-radius: 1000px; */
+    margin: 5vw;
+    /* border-color: #ecfda9; */
+    /* border-radius: 25px; */
+}
+
+.container{
+    display: flex; */
+    align-content: center;
+    justify-content: center;
+    width: 90vw;
+    /* background-image: linear-gradient(#9a7dc6, #ffffff); */
+    background-color: red;
+    /* margin: 5vw; */
+/* background-image: linear-gradient(#9a7dc6, #ffffff); */
+}
+
+h4{
+    font-style: normal;
+    font-family: Avantgarde;
+    color: #ecfda9;
+    margin: 1vw;
+    /* margin-right: 5vw; */
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.form-control{
+    min-height: 55px;
+    /* min-width: 35px; */
+    max-height: 15vw;
 }

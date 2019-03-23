@@ -1,9 +1,15 @@
+<div class="sticky-top">
+    <div class="nav_container">
+        <p>hey!</p>
+    </div>
+</div>
+
 {{#if currentUser}}
 <div class="nav_background">
 <ul class="navbar-nav">
-    <li><a href="/user-profile/{{currentUser.username}}"><button type="login_button" class="btn btn-lg">My Profile</button></a></li>
-    <li><a href="/"><img src="/imgs/yarn_logo.png" alt=""></a></li>
-     <li><a href="/logout"><button type="login_button" class="btn btn-lg">Logout</button></a></li>
+    <a href="/user-profile/{{currentUser.username}}"><button type="login_button" class="btn btn-lg">My Profile</button></a>
+    <a href="/"><img src="/imgs/yarn_logo.png" alt=""></a>
+    <a href="/logout"><button type="login_button" class="btn btn-lg">Logout</button></a>
   </ul>
 <div class="new_story_container">
      <a href="/starters/new#new"><button type="login_button" class="btn btn-lg btn-block">Begin a new story</button></a>
@@ -18,7 +24,7 @@
         <a href="/login#login"><button type="login_button" class="btn btn-lg">Login</button></a>
         <a href="/"><div id="sketch-holder"></div></a>
         <a href="/sign-up#signup"><button type="signup_button" class="btn btn-lg">Sign up</button></a>
-          </ul>
+          <!-- </ul> -->
     </div>
     </div>
     </div>
