@@ -41,6 +41,7 @@ module.exports = function(app) {
 
         // EDIT a compliment by clicking on the edit link in the shown compliment
         app.get('/starters/:starterSlug/threads/:threadId/edit', (req, res) => {
+            let authorStart;
             const save = req.originalUrl
             let count = 0;
             let starterId = "";
@@ -60,7 +61,12 @@ module.exports = function(app) {
             .then(starter => {
                 console.log('LOLOL' + starter.slug)
           Thread.findById(req.params.threadId, function(err, thread) {
-            res.render('threads-edit', {starter, thread, currentUser});
+            authorStart = req.user.username == thread.author.username;
+            if (authorStart){
+                res.render('threads-edit', {starter, thread, currentUser});
+            } else {
+                res.redirect(`${starter.url}`);
+            }
           })
       })
       });

@@ -148,7 +148,7 @@ module.exports = (app) => {
 
 
 
-        // EDIT a compliment by clicking on the edit link in the shown compliment
+        // EDIT a story starter by clicking on the story starter
         app.get('/starters/:slug/edit', (req, res) => {
             console.log("edit form")
             var currentUser = req.user;
