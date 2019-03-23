@@ -6,6 +6,8 @@ let r;
 let n;
 let logo_background;
 
+// let v = document.getElementById('sketch-holder')
+
 let rot;
 
 let mouse_x = 0;

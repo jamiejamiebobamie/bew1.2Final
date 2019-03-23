@@ -1,6 +1,6 @@
 <div class="row">
-
-<div class="col-xs-12 comment-indent">
+<div class="story-in-progress">
+    <div class="story-in-progress">
   <div class="titleContainer"><h1>{{starter.title}}</h1></div>
   {{#if authorStart}}
     <a href="{{starter.slug}}/edit" class="lead"><p>{{starter.content}}</p></a>
@@ -8,7 +8,6 @@
     <p>{{starter.content}}</p>
     {{/if}}
   </div>
-
     <p class="text-right">
      <a href="/user-profile/{{starter.author.username}}">{{starter.author.username}}</a></p>
     </div>
@@ -18,7 +17,7 @@
   {{/each}}
 
   <form action="/starters/{{starter.slug}}/threads" method="post">
-  <textarea class='form-control' name="content" placeholder="One more thread..."></textarea>
+  <textarea class='form-control' name="content" rows="10" placeholder="One more thread..."></textarea>
   <div class="text-right">
     <button type="submit" class="btn btn-primary">Add to the tale!</button>
   </div>
@@ -29,4 +28,4 @@
     <img class="logo" src='https://image.flaticon.com/icons/svg/1581/1581847.svg'>
 </a>
 </div>
-</div>
+    </div>

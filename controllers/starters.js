@@ -14,9 +14,9 @@ module.exports = (app) => {
             let startersFalse;
             let startersTrue;
             var currentUser = req.user;
-            Starter.find({"finished": false}).populate('author')
+            Starter.find({"finished": false}).limit( 5 ).populate('author')
                     .then(startersFalse => {
-                Starter.find({"finished": true}).populate('author')
+                Starter.find({"finished": true}).limit( 5 ).populate('author')
                     .then(startersTrue => {
                     res.render('index-landing', {startersTrue: startersTrue, startersFalse: startersFalse, currentUser, landing });
                 }).catch(err => {
@@ -36,6 +36,7 @@ module.exports = (app) => {
     // CREATE
         app.post("/starters/new", (req, res) => {
             var currentUser = req.user;
+
             if (req.user) {
                 if (req.body.title == "" || req.body.content == ""){
                     res.render('errorNewStarter', {currentUser});
@@ -57,6 +58,7 @@ module.exports = (app) => {
                 starter
                     .save()
                     .then(starter => {
+                        console.log(starter.createdAt)
                         return User.findById(req.user._id);
                     })
                     .then(user => {

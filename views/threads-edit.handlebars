@@ -13,21 +13,25 @@
 
   </fieldset>
 
-      <!-- BUTTON -->
+        <div class="finished_button">
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Save changes!</button>
       </div>
     </form>
+          </div>
 
    <div class='edit'>
-        <span style="float:left">
-        <p><form method="" action="/starters/{{thread.slug}}">
+
+    <span style="float:left">
+        <form method="" action="/starters/{{thread.slug}}">
             <button class="btn btn-primary" type="submit">Back</button>
-        </form></p></span>
+        </form></span>
+
     <span style="float:right">
-    <p><form method="POST" action="/starters/{{thread.slug}}/threads/{{thread._id}}?_method=DELETE">
+    <form method="POST" action="/starters/{{thread.slug}}/threads/{{thread._id}}?_method=DELETE">
         <button class="btn btn-primary" type="submit">Delete Thread</button>
-    </form></p></span>
+    </form></span>
+
   </div>
 
   </div>

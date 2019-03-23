@@ -15,6 +15,8 @@ const StarterSchema = new Schema({
   author : { type: Schema.Types.ObjectId, ref: "User", required: false },
   authorName: { type: String, required: false },
 
+  createdAt: { type: Date }, //need to implement so I can have the most recent 5 stories appear on landing page...
+
   slug: {type: String, required:false, unique: true},
 
   url: { type: String, required: false },
