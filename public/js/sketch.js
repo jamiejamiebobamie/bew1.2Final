@@ -42,7 +42,7 @@ function draw(){
     // background(34,94,151)
     push()
     console.log(windowWidth)
-    translate(windowWidth/2.8,0)
+    translate(windowWidth/3.3,0)
     // push()
     // image(yarn1, 275, 280, windowWidth)
     // tint(255, 200)
