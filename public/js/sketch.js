@@ -29,6 +29,8 @@ function setup () {
   a = loadImage('../imgs/A.png')
   r = loadImage('../imgs/R.png')
   n = loadImage('../imgs/N.png')
+  yarn1 = loadImage('../imgs/background_yarn.png')
+  yarn2 = loadImage('../imgs/background_yarn copy.png')
 
 
 
@@ -36,13 +38,20 @@ function setup () {
 
 function drawz(){
 function draw(){
-    background(255)
+    background('#225E97')
     // background(34,94,151)
     push()
-    translate(windowWidth/12,0)
+    console.log(windowWidth)
+    translate(windowWidth/2.6,0)
+    // push()
+    // image(yarn1, 275, 280, windowWidth)
+    // tint(255, 200)
+    // image(yarn2, 275, 280, windowWidth)
+
+    // tint(0,180,180)
 
 
-
+    tint(255)
     image(logo_background, 275, 275)
     tint(255, 127)
     push();
@@ -57,6 +66,7 @@ function draw(){
     image(a,190-rot*.3,310+rot*3);
     image(r,250+rot*.3,310-rot*3);
     image(n,320-rot*.3,310+rot*3);
+    pop();
     pop();
 
     imageMode(CENTER);

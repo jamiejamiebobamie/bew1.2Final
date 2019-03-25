@@ -1,9 +1,9 @@
 body{
-    background-image: linear-gradient(#124B80, #9a7dc6);
+    /* background-image: linear-gradient(#124B80, #9a7dc6); */
 
     /* background-image: linear-gradient(#124B80, #2264A2); */
     /* background-image: url("/imgs/background_copy.jpg"); */
-    /* background-color: yellow */
+    background-color: #003366;
     /* background-color: #9a7dc6; */
     user-select: none;
 -moz-user-select: none;
@@ -281,12 +281,12 @@ h4{
     /* margin-right: 5vw; */
     justify-content: center;
     text-align: center;
-    font-size: 30px;
+    font-size: 100px;
 
     z-index: 2;
 
 vertical-align: middle;
-line-height: 50px;
+line-height: 100px;
 /* font-kerning: none; */
 }
 
